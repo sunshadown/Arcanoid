@@ -22,8 +22,8 @@ public class Camera {
 
     Camera(){
         // Domyslne ustawienia kamery:
-        position = new Vector3f(0, 0, 5);
-        direction = new Vector3f(0, 0, -1);
+        position = new Vector3f((float) -27.491451, (float) -0.044956513, (float) 40.568993);
+        direction = new Vector3f((float)0.66238624, (float)0, (float)-0.7491619);
         up = new Vector3f(0, 1, 0);
 
         MovementSpeed = 15.0f;

@@ -408,7 +408,11 @@
             <artifactId>slick2d-core</artifactId>
             <version>1.0.1</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.dyn4j</groupId>
+            <artifactId>dyn4j</artifactId>
+            <version>3.1.5</version>
+        </dependency>
     </dependencies>
 
 </project>

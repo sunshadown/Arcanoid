@@ -1,20 +1,16 @@
 import org.joml.Matrix4f;
 import org.joml.Vector3f;
 import org.lwjgl.*;
-import org.lwjgl.glfw.*;
-import org.lwjgl.opengl.*;
+
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL15.*;
 import static org.lwjgl.opengl.GL20.*;
 import static org.lwjgl.opengl.GL30.*;
 
 
-import java.awt.*;
 import java.io.IOException;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
-import java.nio.LongBuffer;
-import java.nio.ShortBuffer;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +25,7 @@ public class Triangle extends Model {
         Init();
     }
     public Triangle(Vector3f position,Vector3f rotation,Vector3f scale){
-        this.position = position;
+        this.setPosition(position);
         this.rotation = rotation;
         this.scale = scale;
         Init();
@@ -59,7 +55,7 @@ public class Triangle extends Model {
         model.m11(1);
         model.m22(1);
         model.m33(1);
-        model.translate(position.x, position.y, position.z).rotate((float)Math.toRadians(rotation.x),1,0,0).rotate((float)Math.toRadians(rotation.x),0,1,0).rotate((float)Math.toRadians(rotation.z),0,0,1).scale(scale.x,scale.y,scale.z);
+        model.translate(getPosition().x, getPosition().y, getPosition().z).rotate((float)Math.toRadians(rotation.x),1,0,0).rotate((float)Math.toRadians(rotation.x),0,1,0).rotate((float)Math.toRadians(rotation.z),0,0,1).scale(scale.x,scale.y,scale.z);
         FloatBuffer fb_view = BufferUtils.createFloatBuffer(16);
         FloatBuffer fb_proj = BufferUtils.createFloatBuffer(16);
         FloatBuffer fb_model = BufferUtils.createFloatBuffer(16);

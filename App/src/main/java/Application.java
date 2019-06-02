@@ -57,6 +57,7 @@ public class Application {
         glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 4);
         glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE); // the window will stay hidden after creation
         glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE); // the window will be resizable
+        glfwWindowHint(GLFW_FOCUS_ON_SHOW,GLFW_TRUE);
         int []major = new int[5];
         int []minor = new int[5];
         int []rev = new int[5];
@@ -132,7 +133,7 @@ public class Application {
         } // the stack frame is popped automatically
 
 
-       // glfwSetWindowMonitor(getWindow(), getMonitor(),0,0,1920,1080,60);
+        glfwSetWindowMonitor(getWindow(), getMonitor(),0,0,1920,1080,60);
         glfwSetInputMode(window,GLFW_CURSOR,GLFW_CURSOR_DISABLED);
         // Make the OpenGL context current
         glfwMakeContextCurrent(window);
@@ -148,11 +149,24 @@ public class Application {
             instance.manager.setProj(new Matrix4f().perspective((float)Math.toRadians(90),aspect,0.01f,1000.0f));
             instance.manager.setOrtho(new Matrix4f().ortho(0.0f,(float)w,0.0f,(float)h,-1.0f,1.0f));
             instance.manager.PostRenderUpdate(w,h);
+            instance.manager.setScreen_x(w);
+            instance.manager.setScreen_y(h);
             //instance.manager = glm::ortho(0.0f, (float)w, 0.0f, (float)h, -1.0f, 1.0f);
             glViewport(0, 0, w, h); // Okreslenie wymiarow renderowanego viewportu
         });
+
+        float aspect = (float)1920 / 1080; // Wspolczynnik proporcji dlugosci bokow
+        instance.manager.setProj(new Matrix4f().perspective((float)Math.toRadians(90),aspect,0.01f,1000.0f));
+        instance.manager.setOrtho(new Matrix4f().ortho(0.0f,(float)1920,0.0f,(float)1080,-1.0f,1.0f));
+        instance.manager.PostRenderUpdate(1920,1080);
+        instance.manager.setScreen_x(1920);
+        instance.manager.setScreen_y(1080);
+        glViewport(0, 0, 1920, 1080); // Okreslenie wymiarow renderowanego viewportu
         // Make the window visible
+        glfwSetWindowAttrib(window,GLFW_FOCUS_ON_SHOW,GLFW_TRUE);
+        glfwRequestWindowAttention(window);
         glfwShowWindow(getWindow());
+        glfwFocusWindow(window);
     }
 
     private void loop() {

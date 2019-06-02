@@ -19,6 +19,8 @@ import static org.lwjgl.opengl.GL11.*;
 
 public class Manager {
     private Camera camera;
+    private float screen_x;
+    private float screen_y;
     private FloatBuffer fb;
     private FloatBuffer fb_view;
     private FloatBuffer fb_proj;
@@ -55,6 +57,9 @@ public class Manager {
     private int filtertype;
     private int edward_filter = 1;
 
+    private Panel panel;
+    private Logic logic;
+
     public Manager(){
         setCamera(new Camera());
         cube = new Cube(true);
@@ -69,6 +74,10 @@ public class Manager {
         ((Render2D) renderer).LoadTex(getClass().getResource("/Images/test3.jpg").getPath().substring(1));
         ((Render2D) getRenderer2()).LoadTex(getClass().getResource("/Images/test3.jpg").getPath().substring(1));
 
+        //PANEL INIT
+        panel = new Panel(1920/2,50,new Vector2f(200.0f,50.0f),getClass().getResource("/Images/01-Breakout-Tiles.png").getPath().substring(1));
+        logic = new Logic(panel);
+        //!!!!!!!!!!
         fbo = new FBO(1920,1080);
         setFiltertype(5);
         renderPass = new Render2D(getFiltertype(),true,fbo.getTex());
@@ -162,6 +171,8 @@ public class Manager {
         view.get(fb_view);
 
         cube.Update(dt);
+        logic.Update(dt);
+        //panel.Update(dt);
 
         if(time  >= 3.0f) {
             System.out.println("position :" + getCamera().getPosition().x +" "+ getCamera().getPosition().y+" "+ getCamera().getPosition().z+", direction :" + getCamera().getDirection().x +" "+ getCamera().getDirection().y+" "+ getCamera().getDirection().z);
@@ -182,7 +193,9 @@ public class Manager {
 
     public void AfterRender(){
         //renderer.Render(view,getProj(),ortho);
-        getRenderer2().Render(view,getProj(),ortho);
+        //getRenderer2().Render(view,getProj(),ortho);
+        //panel.Render(view,getProj(),ortho);
+        logic.Render(view,getProj(),ortho);
     }
 
     public void Render(){
@@ -286,5 +299,21 @@ public class Manager {
 
     public void setPasses(int passes) {
         this.passes = passes;
+    }
+
+    public float getScreen_x() {
+        return screen_x;
+    }
+
+    public void setScreen_x(float screen_x) {
+        this.screen_x = screen_x;
+    }
+
+    public float getScreen_y() {
+        return screen_y;
+    }
+
+    public void setScreen_y(float screen_y) {
+        this.screen_y = screen_y;
     }
 }

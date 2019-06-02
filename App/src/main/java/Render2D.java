@@ -36,8 +36,8 @@ public class Render2D extends Model{
     }
 
     public Render2D(int filtertype, Vector3f position, Vector2f size, float roate){
-        this.position = position;
-        this.size = size;
+        this.setPosition(position);
+        this.setSize(size);
         this.rotate = rotate;
         this.isFixedSize = true;
         this.setFiltertype(filtertype);
@@ -80,14 +80,17 @@ public class Render2D extends Model{
         model.m11(1);
         model.m22(1);
         model.m33(1);
+
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
         if(isFixedSize){
             FloatBuffer modelbuf = BufferUtils.createFloatBuffer(16);
             FloatBuffer orthobuf = BufferUtils.createFloatBuffer(16);
-            model.translate(position.x,position.y,0.0f);
-            model.translate(size.x *0.5f,0.5f*size.y,0.0f);
+            model.translate(getPosition().x, getPosition().y,0.0f);
+            model.translate(getSize().x *0.5f,0.5f* getSize().y,0.0f);
             model.rotate((float)Math.toRadians(rotate),0,0,1);
-            model.translate(size.x *-0.5f,-0.5f*size.y,0.0f);
-            model.scale(size.x,size.y,1.0f);
+            model.translate(getSize().x *-0.5f,-0.5f* getSize().y,0.0f);
+            model.scale(getSize().x, getSize().y,1.0f);
             model.get(modelbuf);
             ortho.get(orthobuf);
             glUniformMatrix4fv(shader.getUniform("model"),false,modelbuf);
@@ -97,7 +100,7 @@ public class Render2D extends Model{
         else{
             glDrawArrays(GL_TRIANGLE_STRIP,0,4);
         }
-
+        glDisable(GL_BLEND);
         shader.unbind();
         glBindVertexArray(0);
     }
@@ -191,5 +194,13 @@ public class Render2D extends Model{
 
     public void setFiltertype(int filtertype) {
         this.filtertype = filtertype;
+    }
+
+    public Vector2f getSize() {
+        return size;
+    }
+
+    public void setSize(Vector2f size) {
+        this.size = size;
     }
 }
