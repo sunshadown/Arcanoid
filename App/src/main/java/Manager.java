@@ -31,6 +31,9 @@ public class Manager {
     private float time = 0;
 
     private SoundSource AudioSource;
+    private SoundSource Audio_Bounce;
+    private SoundSource Audio_Explosion;
+
     private String defaultDeviceName;
     private long device;
     private long context;
@@ -76,7 +79,7 @@ public class Manager {
 
         //PANEL INIT
         panel = new Panel(1920/2,50,new Vector2f(200.0f,50.0f),getClass().getResource("/Images/01-Breakout-Tiles.png").getPath().substring(1));
-        logic = new Logic(panel);
+        setLogic(new Logic(panel));
         //!!!!!!!!!!
         fbo = new FBO(1920,1080);
         setFiltertype(5);
@@ -84,13 +87,20 @@ public class Manager {
         fbos = new ArrayList<>();
         renderPasses = new ArrayList<>();
         setPasses(10);
-        setRenderPassing(true);
+        setRenderPassing(false);
 
         PostRenderInit();
 
         DeviceInit();
         SoundInit();
-        AudioSource.play();
+
+        alSourcei(Audio_Bounce.sourcePointer,AL_LOOPING,AL_FALSE);
+        alSourcei(Audio_Explosion.sourcePointer,AL_LOOPING,AL_FALSE);
+        alSourcei(AudioSource.sourcePointer,AL_LOOPING,AL_TRUE);
+        alSourcef(Audio_Explosion.sourcePointer,AL_GAIN,1.0f);
+        alSourcef(Audio_Bounce.sourcePointer,AL_GAIN,0.6f);
+        alSourcef(AudioSource.sourcePointer,AL_GAIN,0.4f);
+        getAudioSource().play();
     }
 
     private void DeviceInit(){
@@ -105,9 +115,13 @@ public class Manager {
     }
 
     private void SoundInit(){
-        AudioSource = new SoundSource();
+        setAudioSource(new SoundSource());
+        setAudio_Bounce(new SoundSource());
+        setAudio_Explosion(new SoundSource());
         try{
-            AudioSource.LoadOgg(getClass().getResource("/Sound/sound.ogg").getPath().substring(1));
+            getAudioSource().LoadOgg(getClass().getResource("/Sound/rsl.ogg").getPath().substring(1));
+            getAudio_Bounce().LoadOgg(getClass().getResource("/Sound/stapler.ogg").getPath().substring(1));
+            getAudio_Explosion().LoadOgg(getClass().getResource("/Sound/Explosion.ogg").getPath().substring(1));
         }catch(IOException err){
             System.err.println(err);
         }
@@ -171,7 +185,7 @@ public class Manager {
         view.get(fb_view);
 
         cube.Update(dt);
-        logic.Update(dt);
+        getLogic().Update(dt);
         //panel.Update(dt);
 
         if(time  >= 3.0f) {
@@ -195,7 +209,7 @@ public class Manager {
         //renderer.Render(view,getProj(),ortho);
         //getRenderer2().Render(view,getProj(),ortho);
         //panel.Render(view,getProj(),ortho);
-        logic.Render(view,getProj(),ortho);
+        getLogic().Render(view,getProj(),ortho);
     }
 
     public void Render(){
@@ -315,5 +329,37 @@ public class Manager {
 
     public void setScreen_y(float screen_y) {
         this.screen_y = screen_y;
+    }
+
+    public Logic getLogic() {
+        return logic;
+    }
+
+    public void setLogic(Logic logic) {
+        this.logic = logic;
+    }
+
+    public SoundSource getAudioSource() {
+        return AudioSource;
+    }
+
+    public void setAudioSource(SoundSource audioSource) {
+        AudioSource = audioSource;
+    }
+
+    public SoundSource getAudio_Bounce() {
+        return Audio_Bounce;
+    }
+
+    public void setAudio_Bounce(SoundSource audio_Bounce) {
+        Audio_Bounce = audio_Bounce;
+    }
+
+    public SoundSource getAudio_Explosion() {
+        return Audio_Explosion;
+    }
+
+    public void setAudio_Explosion(SoundSource audio_Explosion) {
+        Audio_Explosion = audio_Explosion;
     }
 }

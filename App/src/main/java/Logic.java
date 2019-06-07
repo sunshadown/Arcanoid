@@ -1,14 +1,13 @@
 import org.dyn4j.dynamics.Body;
 import org.dyn4j.dynamics.BodyFixture;
+import org.dyn4j.dynamics.Settings;
 import org.dyn4j.geometry.*;
 import org.joml.Matrix4f;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
-import org.lwjgl.Sys;
 
 import static org.lwjgl.glfw.GLFW.*;
 import org.dyn4j.dynamics.World;
-import org.dyn4j.dynamics.joint.MotorJoint;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,18 +20,24 @@ public class Logic{
     private final float speedModifier = 800.0f;
     private World world;
 
+    private boolean isPullingBall = false;
+    private boolean isALive = true;
+    private int number_of_lifes = 5;
     public static float scale = 5.0f;
     private float time = 0;
     private Panel test;
     private Panel m_Panel;
     private Panel l_wall,r_wall,b_wall,t_wall;
     private List<Panel> walls;
+    private List<Panel> blocks;
+    private List<Panel> lifes;
 
     public Logic(Panel m_Panel){
-        this.m_Panel = m_Panel;
+        this.setM_Panel(m_Panel);
         Init();
         InitWalls();
         InitWorld();
+        CreateListeners();
     }
 
     private void InitWalls(){
@@ -73,32 +78,48 @@ public class Logic{
     private void InitWallsBodies(){
         for (Panel panel:
              walls) {
-            world.addBody(panel.getBody());
+            getWorld().addBody(panel.getBody());
         }
     }
 
     private void InitWorld(){
-        world = new World();
-        world.setGravity(World.ZERO_GRAVITY);
+        setWorld(new World());
+        getWorld().setGravity(World.ZERO_GRAVITY);
+        Settings settings = getWorld().getSettings();
+        settings.setMaximumTranslation(30.0f);
+        settings.setAngularTolerance(0.0f);
+        double max_translation = getWorld().getSettings().getMaximumTranslation();
+        double max_linear_correction = getWorld().getSettings().getMaximumLinearCorrection();
+        System.out.println("max_translation : " + max_translation);
+        System.out.println("max_linear_correction : " + max_linear_correction);
         InitBodies();
         InitWallsBodies();
+
+        //GenerateSideBlocks(1900,100,0,new Vector2f(20,20),new Vector2f(10,1050));
+        GenerateSideBlocks(1900,100,0,new Vector2f(50,50),new Vector2f(10,1000));
+        //GenerateSideBlocks(1900,100,0,new Vector2f(20,20),new Vector2f(10,980));
+        GenerateSideBlocks(1900,100,0,new Vector2f(50,50),new Vector2f(10,930));
+        //GenerateSideBlocks(1900,100,0,new Vector2f(20,20),new Vector2f(10,910));
+        GenerateSideBlocks(1900,100,0,new Vector2f(50,50),new Vector2f(10,860));
+        //GenerateSideBlocks(1900,100,0,new Vector2f(20,20),new Vector2f(10,840));
+        GenerateSideBlocks(1900,100,0,new Vector2f(50,50),new Vector2f(10,790));
     }
 
     private void InitBodies(){
         Body panel_body = new Body();
-        panel_body.addFixture(Geometry.createRectangle((float)m_Panel.getM_panel().getSize().x,(float)m_Panel.getM_panel().getSize().y));
+        panel_body.addFixture(Geometry.createEllipse((float) getM_Panel().getM_panel().getSize().x,(float) getM_Panel().getM_panel().getSize().y));
         panel_body.setMass(Mass.Type.INFINITE);
-        panel_body.translate(new Vector2(m_Panel.getCenter_x(),m_Panel.getCenter_y()));
+        panel_body.translate(new Vector2(getM_Panel().getCenter_x(), getM_Panel().getCenter_y()));
 
         System.out.println("Panel body translation : "+panel_body.getTransform().getTranslationX()+" , "+panel_body.getTransform().getTranslationY());
-        m_Panel.setBody(panel_body);
-        world.addBody(panel_body);
+        getM_Panel().setBody(panel_body);
+        getWorld().addBody(panel_body);
 
 
-        test = new Panel(screen_x/2,200,new Vector2f(50.0f,50.0f),getClass().getResource("/Images/58-Breakout-Tiles.png").getPath().substring(1));
+        setTest(new Panel(screen_x/2,200,new Vector2f(50.0f,50.0f),getClass().getResource("/Images/58-Breakout-Tiles.png").getPath().substring(1)));
         Body test_body = new Body();
         //BodyFixture fixture = new BodyFixture(Geometry.createRectangle((double)test.getM_panel().getSize().x,(double)test.getM_panel().getSize().y));
-        BodyFixture fixture = new BodyFixture(Geometry.createCircle(test.getM_panel().getSize().x/2));
+        BodyFixture fixture = new BodyFixture(Geometry.createCircle(getTest().getM_panel().getSize().x/2));
         fixture.setDensity(300);
         fixture.setRestitution(1);
         fixture.setFriction(0);
@@ -107,60 +128,185 @@ public class Logic{
         test_body_mass.setType(Mass.Type.NORMAL);
         test_body.setMass(test_body_mass);
         System.out.println(test_body.getMass());
-        test_body.translate(new Vector2(test.getCenter_x(),test.getCenter_y()));
-        test.setBody(test_body);
-        world.addBody(test.getBody());
-        test_body.applyImpulse(new Vector2(0,800));
-        //test_body.setLinearVelocity(0,100);
-        //test.getBody().setLinearVelocity(0,300);
+        test_body.translate(new Vector2(getTest().getCenter_x(), getTest().getCenter_y()));
+        getTest().setBody(test_body);
+        getWorld().addBody(getTest().getBody());
+        test_body.applyImpulse(new Vector2(0,5000));
+    }
 
+    private void CreateListeners(){
+        getWorld().addListener(new Listeners.Panel_Ball_Listerner(getM_Panel().getBody(), getTest().getBody()));
+        getWorld().addListener(new Listeners.Destroyer_Listener(blocks));
+        getWorld().addListener(new Listeners.Ball_BWall(test.getBody(),b_wall.getBody()));
     }
 
     private void Init(){
         screen_x = 1920;
         screen_y = 1080;
         x_min = 10 ;//+ (int)m_Panel.getM_panel().getSize().x;
-        y_min = 0 + (int)m_Panel.getM_panel().getSize().y;
-        x_max = screen_x - (int)m_Panel.getM_panel().getSize().x - 10;
-        y_max = screen_y - (int)m_Panel.getM_panel().getSize().y;
+        y_min = 0 + (int) getM_Panel().getM_panel().getSize().y;
+        x_max = screen_x - (int) getM_Panel().getM_panel().getSize().x - 10;
+        y_max = screen_y - (int) getM_Panel().getM_panel().getSize().y;
 
         System.out.println("x_min : " + x_min +" , x_max : "+x_max);
+        CreateLifes();
     }
 
     public void Update(float dt){
-        world.update(dt);
+        getWorld().update(dt);
         Mover(dt);
-        test.Update(dt);
+        getTest().Update(dt);
 
         time += dt;
         if(time >= 0.2f){
             time = 0.0f;
-            Transform panel_transform = m_Panel.getBody().getTransform();
-            Transform test_transform = test.getBody().getTransform();
+            Transform panel_transform = getM_Panel().getBody().getTransform();
+            Transform test_transform = getTest().getBody().getTransform();
             Vector2 ndir = new Vector2(panel_transform.getTranslationX() - test_transform.getTranslationX(),panel_transform.getTranslationY() - test_transform.getTranslationY());
             Vector2 ndir_offset = new Vector2(0,25);
             ndir.add(ndir_offset);
             ndir.normalize();
-            ndir.multiply(10000);
-            test.getBody().applyForce(ndir);
+            ndir.multiply(100000);
+            if(isPullingBall()) getTest().getBody().applyForce(ndir);
         }
 
     }
 
 
     public void Render(Matrix4f view, Matrix4f proj, Matrix4f ortho){
-        m_Panel.Render(view,proj,ortho);
-        test.Render(view,proj,ortho);
+        getM_Panel().Render(view,proj,ortho);
+        getTest().Render(view,proj,ortho);
 
         for (Panel panel:
              walls) {
             panel.Render(view,proj,ortho);
         }
+        RenderSideBlocks(view,proj,ortho);
+        RenderLifes(view,proj,ortho);
     }
 
+    public void LifeDecrese(){
+        if(number_of_lifes <= 0){
+            setALive(false);
+            return;
+        }
+        number_of_lifes--;
+    }
+
+    private void CreateLifes(){
+        lifes = new ArrayList<>();
+        Vector2f starting_pos = new Vector2f(10,10);
+        Vector2f size_of_life = new Vector2f(50,50);
+        float offset = 5.0f;
+        String path = getClass().getResource("Images/heart_full_32x32.png").getPath().substring(1);
+        for(int i = 0 ; i < number_of_lifes ; i++){
+            Panel temp = new Panel(starting_pos.x + i*size_of_life.x+offset,starting_pos.y,size_of_life,path);
+            lifes.add(temp);
+        }
+    }
+
+    private void RenderLifes(Matrix4f view, Matrix4f proj, Matrix4f ortho){
+        for (int i = 0 ; i < number_of_lifes ;i++) {
+            Panel panel = lifes.get(i);
+            panel.Render(view,proj,ortho);
+        }
+    }
+
+    private void GenerateSideBlocks(int width, int height, int offset, Vector2f size_of_Block, Vector2f init_pos){
+
+        if(blocks == null)blocks = new ArrayList<>();
+        try{
+            if(size_of_Block.x > width || size_of_Block.y > height)return;
+            int max_number_of_blocks = (int) (width / (size_of_Block.x + offset));
+
+            System.out.println("max number of blocks : " + max_number_of_blocks);
+            String green = getClass().getResource("Images/03-Breakout-Tiles.png").getPath().substring(1);
+            String red = getClass().getResource("Images/07-Breakout-Tiles.png").getPath().substring(1);
+            String yellow = getClass().getResource("Images/13-Breakout-Tiles.png").getPath().substring(1);
+            String green2 = getClass().getResource("Images/15-Breakout-Tiles.png").getPath().substring(1);
+            String blue = getClass().getResource("Images/11-Breakout-Tiles.png").getPath().substring(1);
+            String gray = getClass().getResource("Images/17-Breakout-Tiles.png").getPath().substring(1);
+            String purple = getClass().getResource("Images/05-Breakout-Tiles.png").getPath().substring(1);
+            String bronze = getClass().getResource("Images/19-Breakout-Tiles.png").getPath().substring(1);
+            String path = gray;
+
+            Texture texture_green = Texture.loadTexture(green);
+            Texture texture_red = Texture.loadTexture(red);
+            Texture texture_yellow = Texture.loadTexture(yellow);
+            Texture texture_green2 = Texture.loadTexture(green2);
+            Texture texture_blue = Texture.loadTexture(blue);
+            Texture texture_gray = Texture.loadTexture(gray);
+            Texture texture_purple = Texture.loadTexture(purple);
+            Texture texture_bronze = Texture.loadTexture(bronze);
+            int vao = test.getM_panel().getVAO();
+            Shader shader = test.getM_panel().getShader();
+            Texture m_texture;
+
+            for(int i = 0 ; i < max_number_of_blocks;i++){
+                int val = (int) ((Math.random() * 10000) % 7);
+                switch (val){
+                    case 0:
+                        path = green;
+                        m_texture = texture_green;
+                        break;
+                    case 1:
+                        path = red;
+                        m_texture = texture_red;
+                        break;
+                    case 2:
+                        path = yellow;
+                        m_texture = texture_yellow;
+                        break;
+                    case 3:
+                        path = green2;
+                        m_texture = texture_green2;
+                        break;
+                    case 4:
+                        path = blue;
+                        m_texture = texture_blue;
+                        break;
+                    case 5:
+                        path = gray;
+                        m_texture = texture_gray;
+                        break;
+                    case 6:
+                        path = purple;
+                        m_texture = texture_purple;
+                        break;
+                    case 7:
+                        path = bronze;
+                        m_texture = texture_bronze;
+                        break;
+                        default:
+                            path = green;
+                            m_texture = texture_green;
+                }
+                Vector2f npos = new Vector2f(init_pos.x + offset + i*size_of_Block.x,init_pos.y + offset + 0);//i*size_of_Block.y);
+                //Panel temp = new Panel(npos.x,npos.y,size_of_Block,path);
+                Panel temp = new Panel(npos.x,npos.y,size_of_Block,vao,m_texture,shader);
+                Body body = new Body();
+                body.addFixture(Geometry.createRectangle((float)temp.getM_panel().getSize().x,(float)temp.getM_panel().getSize().y));
+                body.setMass(Mass.Type.INFINITE);
+                body.translate(temp.getCenter_x(),temp.getCenter_y());
+                temp.setBody(body);
+                blocks.add(temp);
+                getWorld().addBody(body);
+            }
+        }catch(Exception err){
+            System.err.println(err);
+        }
+        System.out.println("Sideblocks number :" + blocks.size());
+    }
+
+    private void RenderSideBlocks(Matrix4f view, Matrix4f proj, Matrix4f ortho){
+        for (Panel panel:
+             blocks) {
+            panel.Render(view,proj,ortho);
+        }
+    }
     private void Mover(float dt){
-        float npos_x = m_Panel.getM_panel().getPosition().x;
-        float npos_y = m_Panel.getM_panel().getPosition().y;
+        float npos_x = getM_Panel().getM_panel().getPosition().x;
+        float npos_y = getM_Panel().getM_panel().getPosition().y;
 
         if(glfwGetKey(Application.getInstance().getWindow(),GLFW_KEY_RIGHT) == GLFW_PRESS){
             npos_x += 1.0f * speedModifier * dt;
@@ -171,7 +317,47 @@ public class Logic{
 
         int npos_X = Math.max(10,Math.min(x_max,(int)npos_x));
 
-        m_Panel.getM_panel().setPosition(new Vector3f(npos_X,npos_y,0.0f));
-        m_Panel.CalculateCenter();
+        getM_Panel().getM_panel().setPosition(new Vector3f(npos_X,npos_y,0.0f));
+        getM_Panel().CalculateCenter();
+    }
+
+    public boolean isPullingBall() {
+        return isPullingBall;
+    }
+
+    public void setPullingBall(boolean pullingBall) {
+        isPullingBall = pullingBall;
+    }
+
+    public World getWorld() {
+        return world;
+    }
+
+    public void setWorld(World world) {
+        this.world = world;
+    }
+
+    public boolean isALive() {
+        return isALive;
+    }
+
+    public void setALive(boolean ALive) {
+        isALive = ALive;
+    }
+
+    public Panel getTest() {
+        return test;
+    }
+
+    public void setTest(Panel test) {
+        this.test = test;
+    }
+
+    public Panel getM_Panel() {
+        return m_Panel;
+    }
+
+    public void setM_Panel(Panel m_Panel) {
+        this.m_Panel = m_Panel;
     }
 }

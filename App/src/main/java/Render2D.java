@@ -43,9 +43,20 @@ public class Render2D extends Model{
         this.setFiltertype(filtertype);
         Init();
     }
+
+    public Render2D(int filtertype, Vector3f position, Vector2f size, float roate,int VAO, Texture texture, Shader shader){
+        this.setPosition(position);
+        this.setSize(size);
+        this.rotate = rotate;
+        this.isFixedSize = true;
+        this.setFiltertype(filtertype);
+        this.setVAO(VAO);
+        this.setShader(shader);
+        this.texture = texture;
+    }
     @Override
     public void Init() {
-        shader = new Shader();
+        setShader(new Shader());
         InitShader();
         InitBuffer();
 
@@ -58,11 +69,11 @@ public class Render2D extends Model{
 
     @Override
     public void Render(Matrix4f view, Matrix4f proj,Matrix4f ortho) {
-        glBindVertexArray(VAO);
-        shader.bind();
+        glBindVertexArray(getVAO());
+        getShader().bind();
 
-        glUniform1i(shader.getUniform("mySampler"), 0);
-        glUniform1i(shader.getUniform("filtertype"), getFiltertype());
+        glUniform1i(getShader().getUniform("mySampler"), 0);
+        glUniform1i(getShader().getUniform("filtertype"), getFiltertype());
 
         glActiveTexture(GL_TEXTURE0);
         if (isFBOtex)
@@ -93,20 +104,20 @@ public class Render2D extends Model{
             model.scale(getSize().x, getSize().y,1.0f);
             model.get(modelbuf);
             ortho.get(orthobuf);
-            glUniformMatrix4fv(shader.getUniform("model"),false,modelbuf);
-            glUniformMatrix4fv(shader.getUniform("projection"),false,orthobuf);
+            glUniformMatrix4fv(getShader().getUniform("model"),false,modelbuf);
+            glUniformMatrix4fv(getShader().getUniform("projection"),false,orthobuf);
             glDrawArrays(GL_TRIANGLES,0,6);
         }
         else{
             glDrawArrays(GL_TRIANGLE_STRIP,0,4);
         }
         glDisable(GL_BLEND);
-        shader.unbind();
+        getShader().unbind();
         glBindVertexArray(0);
     }
 
     private void InitBuffer(){
-        VAO = glGenVertexArrays();
+        setVAO(glGenVertexArrays());
         VBO = glGenBuffers();
         EBO = glGenBuffers();
 
@@ -127,23 +138,23 @@ public class Render2D extends Model{
                 1.0f, 1.0f, 1.0f, 1.0f,
                 1.0f, 0.0f, 1.0f, 0.0f
         };
-        glBindVertexArray(VAO);
+        glBindVertexArray(getVAO());
         FloatBuffer floatBuffer;
         if(isFixedSize){
             floatBuffer = BufferUtils.createFloatBuffer(vertices.length);
             floatBuffer.put(vertices).flip();
             glBindBuffer(GL_ARRAY_BUFFER,VBO);
             glBufferData(GL_ARRAY_BUFFER,floatBuffer,GL_STATIC_DRAW);
-            glEnableVertexAttribArray(shader.getAttrib("vPosition"));
-            glVertexAttribPointer(shader.getAttrib("vPosition"),4,GL_FLOAT,false,0,0);
+            glEnableVertexAttribArray(getShader().getAttrib("vPosition"));
+            glVertexAttribPointer(getShader().getAttrib("vPosition"),4,GL_FLOAT,false,0,0);
 
         }else{
             floatBuffer = BufferUtils.createFloatBuffer(tab.length);
             floatBuffer.put(tab).flip();
             glBindBuffer(GL_ARRAY_BUFFER,VBO);
             glBufferData(GL_ARRAY_BUFFER,floatBuffer,GL_STATIC_DRAW);
-            glEnableVertexAttribArray(shader.getAttrib("vPosition"));
-            glVertexAttribPointer(shader.getAttrib("vPosition"),2,GL_FLOAT,false,0,0);
+            glEnableVertexAttribArray(getShader().getAttrib("vPosition"));
+            glVertexAttribPointer(getShader().getAttrib("vPosition"),2,GL_FLOAT,false,0,0);
 
         }
 
@@ -159,17 +170,17 @@ public class Render2D extends Model{
     private void InitShader(){
         if(isFixedSize){
             try {
-                shader.attachVertexShader(getClass().getResource("/Shaders/renderer2Dfixed.vs").getPath().substring(1));
-                shader.attachFragmentShader(getClass().getResource("/Shaders/renderer2Dfixed.fs").getPath().substring(1));
-                shader.link();
+                getShader().attachVertexShader(getClass().getResource("/Shaders/renderer2Dfixed.vs").getPath().substring(1));
+                getShader().attachFragmentShader(getClass().getResource("/Shaders/renderer2Dfixed.fs").getPath().substring(1));
+                getShader().link();
             }catch(IOException err){
                 System.err.println(err);
             }
         }else{
             try {
-                shader.attachVertexShader(getClass().getResource("/Shaders/renderer2D.vs").getPath().substring(1));
-                shader.attachFragmentShader(getClass().getResource("/Shaders/renderer2D.fs").getPath().substring(1));
-                shader.link();
+                getShader().attachVertexShader(getClass().getResource("/Shaders/renderer2D.vs").getPath().substring(1));
+                getShader().attachFragmentShader(getClass().getResource("/Shaders/renderer2D.fs").getPath().substring(1));
+                getShader().link();
             }catch(IOException err){
                 System.err.println(err);
             }

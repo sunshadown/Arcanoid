@@ -4,8 +4,10 @@ import org.joml.Vector3f;
 import java.nio.FloatBuffer;
 
 public abstract class Model {
-    protected Shader shader;
-    protected int VAO,VBO,EBO;
+    private Shader shader;
+    private int VAO;
+    protected int VBO;
+    protected int EBO;
     protected FloatBuffer verticesBuffer;
     private Vector3f position = new Vector3f(0.0f,0.0f,0.0f);
     protected Vector3f rotation = new Vector3f(0.0f,0.0f,0.0f);
@@ -20,5 +22,21 @@ public abstract class Model {
 
     public void setPosition(Vector3f position) {
         this.position = position;
+    }
+
+    public Shader getShader() {
+        return shader;
+    }
+
+    public void setShader(Shader shader) {
+        this.shader = shader;
+    }
+
+    public int getVAO() {
+        return VAO;
+    }
+
+    public void setVAO(int VAO) {
+        this.VAO = VAO;
     }
 }

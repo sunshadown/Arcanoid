@@ -413,6 +413,14 @@
             <artifactId>dyn4j</artifactId>
             <version>3.1.5</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.ice1000.jimgui/core -->
+        <dependency>
+            <groupId>org.ice1000.jimgui</groupId>
+            <artifactId>core</artifactId>
+            <version>v0.5</version>
+        </dependency>
+
+
     </dependencies>
 
 </project>

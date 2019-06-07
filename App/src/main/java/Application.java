@@ -75,10 +75,10 @@ public class Application {
             if (key == GLFW_KEY_ESCAPE && action == GLFW_RELEASE)
                 glfwSetWindowShouldClose(window, true); // We will detect this in the rendering loop
             if (key == GLFW_KEY_M && action == GLFW_RELEASE){
-                boolean state = instance.manager.getCamera().getUseMouse();
+                boolean state = instance.getManager().getCamera().getUseMouse();
                 if(state)glfwSetInputMode(window,GLFW_CURSOR,GLFW_CURSOR_NORMAL);
                 else glfwSetInputMode(window,GLFW_CURSOR,GLFW_CURSOR_DISABLED);
-                instance.manager.getCamera().setUseMouse(!state);
+                instance.getManager().getCamera().setUseMouse(!state);
             }
 
             if(key == GLFW_KEY_G && action == GLFW_RELEASE){
@@ -90,27 +90,26 @@ public class Application {
             }
 
             if(key == GLFW_KEY_N && action == GLFW_RELEASE){
-                int val = instance.manager.getFiltertype();
+                int val = instance.getManager().getFiltertype();
                 if(++val > 38)val = 0;
                 System.out.println("Active Filter :" + MYFilters.filterName[val]);
-                instance.manager.ChangeFilter_Renderes(val);
+                instance.getManager().ChangeFilter_Renderes(val);
             }
 
             if(key == GLFW_KEY_U && action == GLFW_RELEASE){
-                boolean val = instance.manager.isRenderPassing();
-                instance.manager.setRenderPassing(!val);
+                boolean val = instance.getManager().isRenderPassing();
+                instance.getManager().setRenderPassing(!val);
             }
 
             if(key == GLFW_KEY_P && action == GLFW_RELEASE){
-                int val = instance.manager.getEdward_filter();
+                int val = instance.getManager().getEdward_filter();
                 if(++val > 38)val = 0;
-                instance.manager.getRenderer2().setFiltertype(val);
+                instance.getManager().getRenderer2().setFiltertype(val);
             }
-            /*if(key == GLFW_KEY_MINUS && action == GLFW_RELEASE){
-                int val = instance.manager.getPasses();
-                if(++val > )val = 0;
-                instance.manager.getRenderer2().setFiltertype(val);
-            }*/
+            if(key == GLFW_KEY_SPACE && action == GLFW_RELEASE){
+                boolean state = instance.getManager().getLogic().isPullingBall();
+                instance.getManager().getLogic().setPullingBall(!state);
+            }
         });
 
         // Get the thread stack and push a new frame
@@ -143,24 +142,24 @@ public class Application {
         glEnable(GL_DEPTH_TEST);
 
 
-        manager = new Manager();
+        setManager(new Manager());
         GLFWWindowSizeCallback glfwWindowSizeCallback = glfwSetWindowSizeCallback(getWindow(),(window,w,h)->{
             float aspect = (float)w / h; // Wspolczynnik proporcji dlugosci bokow
-            instance.manager.setProj(new Matrix4f().perspective((float)Math.toRadians(90),aspect,0.01f,1000.0f));
-            instance.manager.setOrtho(new Matrix4f().ortho(0.0f,(float)w,0.0f,(float)h,-1.0f,1.0f));
-            instance.manager.PostRenderUpdate(w,h);
-            instance.manager.setScreen_x(w);
-            instance.manager.setScreen_y(h);
+            instance.getManager().setProj(new Matrix4f().perspective((float)Math.toRadians(90),aspect,0.01f,1000.0f));
+            instance.getManager().setOrtho(new Matrix4f().ortho(0.0f,(float)w,0.0f,(float)h,-1.0f,1.0f));
+            instance.getManager().PostRenderUpdate(w,h);
+            instance.getManager().setScreen_x(w);
+            instance.getManager().setScreen_y(h);
             //instance.manager = glm::ortho(0.0f, (float)w, 0.0f, (float)h, -1.0f, 1.0f);
             glViewport(0, 0, w, h); // Okreslenie wymiarow renderowanego viewportu
         });
 
         float aspect = (float)1920 / 1080; // Wspolczynnik proporcji dlugosci bokow
-        instance.manager.setProj(new Matrix4f().perspective((float)Math.toRadians(90),aspect,0.01f,1000.0f));
-        instance.manager.setOrtho(new Matrix4f().ortho(0.0f,(float)1920,0.0f,(float)1080,-1.0f,1.0f));
-        instance.manager.PostRenderUpdate(1920,1080);
-        instance.manager.setScreen_x(1920);
-        instance.manager.setScreen_y(1080);
+        instance.getManager().setProj(new Matrix4f().perspective((float)Math.toRadians(90),aspect,0.01f,1000.0f));
+        instance.getManager().setOrtho(new Matrix4f().ortho(0.0f,(float)1920,0.0f,(float)1080,-1.0f,1.0f));
+        instance.getManager().PostRenderUpdate(1920,1080);
+        instance.getManager().setScreen_x(1920);
+        instance.getManager().setScreen_y(1080);
         glViewport(0, 0, 1920, 1080); // Okreslenie wymiarow renderowanego viewportu
         // Make the window visible
         glfwSetWindowAttrib(window,GLFW_FOCUS_ON_SHOW,GLFW_TRUE);
@@ -180,8 +179,8 @@ public class Application {
 
             currentTime = glfwGetTime();
             float dt = (float)currentTime - (float)last;
-            manager.Update(dt);
-            manager.Render();
+            getManager().Update(dt);
+            getManager().Render();
             last = currentTime;
 
             glfwSwapBuffers(getWindow()); // swap the color buffers
@@ -192,7 +191,7 @@ public class Application {
     private static void key_callback(long window, int key, int scancode, int action, int mods)
     {
         if (key == GLFW_KEY_M && action == GLFW_PRESS){
-            boolean state = instance.manager.getCamera().getUseMouse();
+            boolean state = instance.getManager().getCamera().getUseMouse();
         }
     }
 
@@ -210,5 +209,13 @@ public class Application {
 
     public void setMonitor(long monitor) {
         this.monitor = monitor;
+    }
+
+    public Manager getManager() {
+        return manager;
+    }
+
+    public void setManager(Manager manager) {
+        this.manager = manager;
     }
 }

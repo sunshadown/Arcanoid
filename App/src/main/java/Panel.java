@@ -14,6 +14,16 @@ public class Panel{
     private String filepath;
     private Body body;
 
+    public Panel(float screen_x, float screen_y, Vector2f size, int VAO, Texture texture, Shader shader){
+        this.screen_x = screen_x;
+        this.screen_y = screen_y;
+        setCenter_x((screen_x + size.x/2));
+        setCenter_y((screen_y + size.y/2));
+        this.size = size;
+
+        setM_panel(new Render2D(0,new Vector3f((float)screen_x,screen_y,0.0f),size,0.0f,VAO,texture,shader));
+    }
+
     public Panel(float screen_x, float screen_y, Vector2f size,String filepath){
         this.screen_x = screen_x;
         this.screen_y = screen_y;
@@ -31,6 +41,7 @@ public class Panel{
 
     public void Update(float dt){
         Transform transform = body.getTransform();
+        //transform.setTranslation(transform.getTranslationX()*5.0f,transform.getTranslationY()*5.0f);
         setCenter_x((float)transform.getTranslationX());
         setCenter_y((float)transform.getTranslationY());
         screen_x = (getCenter_x() - size.x/2);

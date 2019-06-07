@@ -32,7 +32,7 @@ public class Triangle extends Model {
     }
     @Override
     public void Init() {
-        shader = new Shader();
+        setShader(new Shader());
         InitShader();
         GenerateWaterTriangles(100,100);
         //InitBuffer();
@@ -46,8 +46,8 @@ public class Triangle extends Model {
 
     @Override
     public void Render(Matrix4f view, Matrix4f proj,Matrix4f ortho) {
-        glBindVertexArray(VAO);
-        shader.bind();
+        glBindVertexArray(getVAO());
+        getShader().bind();
 
         Matrix4f model = new Matrix4f();
         model.zero();
@@ -62,35 +62,35 @@ public class Triangle extends Model {
         model.get(fb_model);
         view.get(fb_view);
         proj.get(fb_proj);
-        glUniformMatrix4fv(shader.getUniform("viewMatrix"),false,fb_view);
-        glUniformMatrix4fv(shader.getUniform("projectionMatrix"),false,fb_proj);
-        glUniformMatrix4fv(shader.getUniform("modelMatrix"),false,fb_model);
-        glUniform3f(shader.getUniform("light.pos"),0.0f,3.0f,-5.0f);
-        glUniform1f(shader.getUniform("time"),time+=0.003f);
+        glUniformMatrix4fv(getShader().getUniform("viewMatrix"),false,fb_view);
+        glUniformMatrix4fv(getShader().getUniform("projectionMatrix"),false,fb_proj);
+        glUniformMatrix4fv(getShader().getUniform("modelMatrix"),false,fb_model);
+        glUniform3f(getShader().getUniform("light.pos"),0.0f,3.0f,-5.0f);
+        glUniform1f(getShader().getUniform("time"),time+=0.003f);
 
         // Draw a triangle of 3 vertices
         //glDrawArrays(GL_POINTS, 0, 1000);
         //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         glDrawElements(GL_TRIANGLES,indexes.length,GL_UNSIGNED_INT,0);
         //glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-        shader.unbind();
+        getShader().unbind();
         glBindVertexArray(0);
     }
 
     private void InitBufferWater(){
-        VAO = glGenVertexArrays();
+        setVAO(glGenVertexArrays());
         VBO = glGenBuffers();
         EBO = glGenBuffers();
 
-        glBindVertexArray(VAO);
+        glBindVertexArray(getVAO());
         glBindBuffer(GL_ARRAY_BUFFER,VBO);
 
         FloatBuffer floatBuffer = BufferUtils.createFloatBuffer(vertexes.length);
         floatBuffer.put(vertexes).flip();
         glBufferData(GL_ARRAY_BUFFER,floatBuffer,GL_STATIC_DRAW);
 
-        glEnableVertexAttribArray(glGetAttribLocation(shader.getID(),"vPosition"));
-        glVertexAttribPointer(glGetAttribLocation(shader.getID(),"vPosition"), 3, GL_FLOAT, false, 0, 0);
+        glEnableVertexAttribArray(glGetAttribLocation(getShader().getID(),"vPosition"));
+        glVertexAttribPointer(glGetAttribLocation(getShader().getID(),"vPosition"), 3, GL_FLOAT, false, 0, 0);
 
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,EBO);
 
@@ -101,10 +101,10 @@ public class Triangle extends Model {
         glBindVertexArray(0);
     }
     private void InitBuffer(){
-        VAO = glGenVertexArrays();
+        setVAO(glGenVertexArrays());
         VBO = glGenBuffers();
 
-        glBindVertexArray(VAO);
+        glBindVertexArray(getVAO());
         glBindBuffer(GL_ARRAY_BUFFER,VBO);
 
         // The vertices of our Triangle
@@ -125,8 +125,8 @@ public class Triangle extends Model {
         floatBuffer.put(vertices).flip();
         glBufferData(GL_ARRAY_BUFFER,floatBuffer,GL_STATIC_DRAW);
 
-        glEnableVertexAttribArray(glGetAttribLocation(shader.getID(),"vPosition"));
-        glVertexAttribPointer(glGetAttribLocation(shader.getID(),"vPosition"), 3, GL_FLOAT, false, 0, 0);
+        glEnableVertexAttribArray(glGetAttribLocation(getShader().getID(),"vPosition"));
+        glVertexAttribPointer(glGetAttribLocation(getShader().getID(),"vPosition"), 3, GL_FLOAT, false, 0, 0);
         //COLORS
         int VBO_COLOR = glGenBuffers();
         glBindBuffer(GL_ARRAY_BUFFER,VBO_COLOR);
@@ -134,17 +134,17 @@ public class Triangle extends Model {
         floatBuffer2.put(colors).flip();
         glBufferData(GL_ARRAY_BUFFER,floatBuffer2,GL_STATIC_DRAW);
 
-        glEnableVertexAttribArray(glGetAttribLocation(shader.getID(),"vColor"));
-        glVertexAttribPointer(glGetAttribLocation(shader.getID(),"vColor"), 3, GL_FLOAT, false, 0, 0);
+        glEnableVertexAttribArray(glGetAttribLocation(getShader().getID(),"vColor"));
+        glVertexAttribPointer(glGetAttribLocation(getShader().getID(),"vColor"), 3, GL_FLOAT, false, 0, 0);
         glBindVertexArray(0);
     }
 
     private void InitShader(){
         try {
-            shader.attachVertexShader(getClass().getResource("/Shaders/phong.vs").getPath().substring(1));
-            shader.attachGeometryShader(getClass().getResource("/Shaders/phong.gs").getPath().substring(1));
-            shader.attachFragmentShader(getClass().getResource("/Shaders/phong.fs").getPath().substring(1));
-            shader.link();
+            getShader().attachVertexShader(getClass().getResource("/Shaders/phong.vs").getPath().substring(1));
+            getShader().attachGeometryShader(getClass().getResource("/Shaders/phong.gs").getPath().substring(1));
+            getShader().attachFragmentShader(getClass().getResource("/Shaders/phong.fs").getPath().substring(1));
+            getShader().link();
         }catch(IOException err){
             System.err.println(err);
         }
