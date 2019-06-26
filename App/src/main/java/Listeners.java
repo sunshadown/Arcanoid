@@ -55,18 +55,37 @@ public class Listeners {
                     Application.getInstance().getManager().getAudio_Explosion().play();
                 }
             }
-            return super.collision(body1, fixture1, body2, fixture2, penetration);
 
+            if(blocks.size() > 0)return super.collision(body1, fixture1, body2, fixture2, penetration);
+            else{
+                Application.getInstance().getManager().getLogic().getLevelManager().isPlaying = false;
+                Application.getInstance().getManager().getLogic().getLevelManager().level++;
+                Transform transform = new Transform();
+                transform.setTranslation(Application.getInstance().getManager().getLogic().getM_Panel().getBody().getTransform().getTranslation().add(new Vector2(0,100)));
+                Application.getInstance().getManager().getLogic().getTest().getBody().setTransform(transform);
+                Application.getInstance().getManager().getLogic().getTest().getBody().setLinearVelocity(0,0);
+                blocks.clear();
+                Application.getInstance().getManager().getLogic().setCanPush(true);
+                Application.getInstance().getManager().getLogic().getLevelManager().LoadActualLevel();
+
+                return false;
+            }
         }
     }
 
     public static class Ball_BWall extends CollisionAdapter{
         private Body ball;
         private Body b_wall;
+        private Body l_wall;
+        private Body r_wall;
+        private Body t_wall;
 
-        Ball_BWall(Body ball, Body b_wall){
+        Ball_BWall(Body ball, Body b_wall, Body l_wall, Body r_wall, Body t_wall){
             this.ball = ball;
             this.b_wall = b_wall;
+            this.t_wall = t_wall;
+            this.l_wall = l_wall;
+            this.r_wall = r_wall;
         }
 
         @Override
@@ -76,9 +95,14 @@ public class Listeners {
                 Transform transform = new Transform();
                 transform.setTranslation(Application.getInstance().getManager().getLogic().getM_Panel().getBody().getTransform().getTranslation().add(new Vector2(0,50)));
                 Application.getInstance().getManager().getLogic().getTest().getBody().setTransform(transform);
-                Application.getInstance().getManager().getLogic().getTest().getBody().setLinearVelocity(0,-1000);
+                Application.getInstance().getManager().getLogic().getTest().getBody().setLinearVelocity(0,0);
+
+                Application.getInstance().getManager().getLogic().setCanPush(true);
+
                 return false;
             }
+            if(body1 == l_wall || body1 == r_wall || body1 == t_wall)Application.getInstance().getManager().getAudio_Bounce2().play();
+            if(body2 == l_wall || body2 == r_wall || body2 == t_wall)Application.getInstance().getManager().getAudio_Bounce2().play();
             return super.collision(body1, fixture1, body2, fixture2, penetration);
         }
     }

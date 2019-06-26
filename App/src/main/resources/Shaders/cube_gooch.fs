@@ -1,4 +1,4 @@
-#version 330
+#version 450
 
 uniform vec4 vCol;
 
@@ -49,4 +49,5 @@ void main()
     vec3 a_color = unlit(vCol);
     vec3 d_color = clamp(dot(n,l),0.0,1.0) * light.col *lit(l,n,normalize(vEyeDirection_cameraspace));
     _color = vec4(a_color + d_color, 1.0f);
+    //_color = vec4(1.0f,1.0f,1.0f, 1.0f);
 }

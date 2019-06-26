@@ -17,10 +17,15 @@ public class Render2D extends Model{
     private int filtertype;
     private boolean isFBOtex;
     private boolean isFixedSize = false;
+    private boolean isAdditive = false;
+    private boolean isChangingColor = false;
+
     private int FBOid;
     private Texture texture;
     private Vector2f size;
     private float rotate;
+    private float m_depth = 0.0f;
+    private float time = 0.0f;
 
     public Render2D(){
         setFiltertype(1);
@@ -64,7 +69,7 @@ public class Render2D extends Model{
 
     @Override
     public void Update(float dt) {
-
+        time += dt;
     }
 
     @Override
@@ -93,7 +98,16 @@ public class Render2D extends Model{
         model.m33(1);
 
         glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+        if(isAdditive)glBlendFunc(GL_ONE,GL_ONE);
+        else glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+
+        if(isChangingColor()){
+            glUniform1f(getShader().getUniform("time"),time);
+        }
+        else{
+            glUniform1f(getShader().getUniform("time"),0.0f);
+        }
+
         if(isFixedSize){
             FloatBuffer modelbuf = BufferUtils.createFloatBuffer(16);
             FloatBuffer orthobuf = BufferUtils.createFloatBuffer(16);
@@ -106,6 +120,7 @@ public class Render2D extends Model{
             ortho.get(orthobuf);
             glUniformMatrix4fv(getShader().getUniform("model"),false,modelbuf);
             glUniformMatrix4fv(getShader().getUniform("projection"),false,orthobuf);
+            glUniform1f(getShader().getUniform("m_depth"), getM_depth());
             glDrawArrays(GL_TRIANGLES,0,6);
         }
         else{
@@ -213,5 +228,37 @@ public class Render2D extends Model{
 
     public void setSize(Vector2f size) {
         this.size = size;
+    }
+
+    public float getM_depth() {
+        return m_depth;
+    }
+
+    public void setM_depth(float m_depth) {
+        this.m_depth = m_depth;
+    }
+
+    public boolean isAdditive() {
+        return isAdditive;
+    }
+
+    public void setAdditive(boolean additive) {
+        isAdditive = additive;
+    }
+
+    public float getTime() {
+        return time;
+    }
+
+    public void setTime(float time) {
+        this.time = time;
+    }
+
+    public boolean isChangingColor() {
+        return isChangingColor;
+    }
+
+    public void setChangingColor(boolean changingColor) {
+        isChangingColor = changingColor;
     }
 }

@@ -7,7 +7,8 @@ import java.util.Map;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL30.*;
 import static org.lwjgl.opengl.GL32.*;
-
+import static org.lwjgl.opengl.GL42.*;
+import static org.lwjgl.opengl.GL43.*;
 
 public class Shader {
     //Program ID
@@ -18,6 +19,11 @@ public class Shader {
     private int geometryShaderID;
     // Fragment Shader ID
     private int fragmentShaderID;
+    // Tesselation Evaluation ID
+    private int tesID;
+    // Tesselation Control ID
+    private int tcsID;
+
     private Map<String,Integer>attributes;
     private Map<String,Integer>uniforms;
 
@@ -45,6 +51,46 @@ public class Shader {
 
         // Attach the shader
         glAttachShader(program, vertexShaderID);
+    }
+
+    public void attachTesselationEvaluationShader(String name)throws IOException{
+        // Load the source
+        String tesShaderSource =  new String(Files.readAllBytes(Paths.get(name)));
+        // Create the shader and set the source
+        tesID = glCreateShader(GL_TESS_EVALUATION_SHADER);
+        glShaderSource(tesID, tesShaderSource);
+
+        // Compile the shader
+        glCompileShader(tesID);
+
+        // Check for errors
+        if (glGetShaderi(tesID, GL_COMPILE_STATUS) == GL_FALSE) {
+            throw new RuntimeException("Error creating tes shader\n"
+                    + glGetShaderInfoLog(tesID, glGetShaderi(tesID, GL_INFO_LOG_LENGTH)));
+        }
+
+        // Attach the shader
+        glAttachShader(program, tesID);
+    }
+
+    public void attachTesselationControlShader(String name)throws IOException{
+        // Load the source
+        String tcsShaderSource =  new String(Files.readAllBytes(Paths.get(name)));
+        // Create the shader and set the source
+        tcsID = glCreateShader(GL_TESS_CONTROL_SHADER);
+        glShaderSource(tcsID, tcsShaderSource);
+
+        // Compile the shader
+        glCompileShader(tcsID);
+
+        // Check for errors
+        if (glGetShaderi(tcsID, GL_COMPILE_STATUS) == GL_FALSE) {
+            throw new RuntimeException("Error creating tcs shader\n"
+                    + glGetShaderInfoLog(tcsID, glGetShaderi(tcsID, GL_INFO_LOG_LENGTH)));
+        }
+
+        // Attach the shader
+        glAttachShader(program, tcsID);
     }
 
     public void attachGeometryShader(String name) throws IOException {
@@ -94,7 +140,8 @@ public class Shader {
 
         // Check for linking errors
         if (glGetProgrami(program, GL_LINK_STATUS) == GL_FALSE) {
-            throw new RuntimeException("Unable to link shader program:");
+
+            throw new RuntimeException("Unable to link shader program:" + glGetProgramInfoLog(program,glGetProgrami(program,GL_INFO_LOG_LENGTH)));
         }
     }
 

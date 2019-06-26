@@ -5,6 +5,7 @@ out vec4 Color;
 
 uniform sampler2D mySampler;
 uniform int filtertype;
+uniform float time;
 
 mat3x3 Filter3x3( const int filtertype);
 
@@ -17,6 +18,14 @@ void main()
     Color += mat3x4( textureOffset( mySampler, TexCord, ivec2( -1, -1 ) ),textureOffset( mySampler, TexCord, ivec2(  0, -1 ) ),textureOffset( mySampler, TexCord, ivec2(  1, -1 ) ) ) * myfilter[0];
     Color += mat3x4( textureOffset( mySampler, TexCord, ivec2( -1,  0 ) ),textureOffset( mySampler, TexCord, ivec2(  0,  0 ) ),textureOffset( mySampler, TexCord, ivec2(  1,  0 ) ) ) * myfilter[1];
     Color += mat3x4( textureOffset( mySampler, TexCord, ivec2( -1,  1 ) ),textureOffset( mySampler, TexCord, ivec2(  0,  1 ) ),textureOffset( mySampler, TexCord, ivec2(  1,  1 ) ) ) * myfilter[2];
+
+    vec3 red = vec3(1,0,0);
+    vec3 green = vec3(0,1,0);
+    vec3 blue = vec3(0,0,1);
+    float t = time;
+    vec3 col = sin(t)*red+cos(t)*green+sin(t)*blue;
+    col = clamp(col*time,0.0,1.0);
+    Color.xyz = clamp(Color.xyz+col,0.0,1.0);
 }
 
 

@@ -25,6 +25,21 @@
         <lwjgl.natives>natives-windows</lwjgl.natives>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>releases</id>
+            <url>https://raw.github.com/SpinyOwl/repo/releases</url>
+        </repository>
+        <repository>
+            <id>snaps</id>
+            <url>https://raw.github.com/SpinyOwl/repo/snapshots</url>
+        </repository>
+        <repository>
+            <id>imgui</id>
+            <url>https://bintray.com/bintray/jcenter</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <dependency>
             <groupId>org.lwjgl</groupId>
@@ -413,14 +428,34 @@
             <artifactId>dyn4j</artifactId>
             <version>3.1.5</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.ice1000.jimgui/core -->
+
+        <!-- LEGUI - SNAPSHOT - https://github.com/SpinyOwl/legui -->
         <dependency>
-            <groupId>org.ice1000.jimgui</groupId>
-            <artifactId>core</artifactId>
-            <version>v0.5</version>
+            <groupId>org.liquidengine</groupId>
+            <artifactId>legui</artifactId>
+            <version>1.4.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.ice1000.jimgui</groupId>
+            <!-- basic functionality -->
+            <artifactId>core</artifactId>
+            <version>v0.8.0</version>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>16.0.2</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>16.0.2</version>
+        </dependency>
 
     </dependencies>
+
 
 </project>

@@ -11,6 +11,8 @@ import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL15.*;
 import static org.lwjgl.opengl.GL20.*;
 import static org.lwjgl.opengl.GL30.*;
+import static org.lwjgl.opengl.GL42.*;
+import static org.lwjgl.opengl.GL43.*;
 
 public class Cube {
     private Shader shader;
@@ -22,11 +24,23 @@ public class Cube {
 
     public Cube(boolean flag){ // Gooch lighting effect
         shader = new Shader();
-        gooch = flag;
+        gooch = true;
         InitShader();
         InitBuffers();
+        //Test();
     }
 
+    private void Test(){
+        try {
+            shader.attachVertexShader(getClass().getResource("/Shaders/cube_fix.vs").getPath().substring(1));
+            shader.attachTesselationControlShader(getClass().getResource("/Shaders/cube_fix.tc").getPath().substring(1));
+            shader.attachTesselationEvaluationShader(getClass().getResource("/Shaders/cube_fix.te").getPath().substring(1));
+            shader.attachFragmentShader(getClass().getResource("/Shaders/cube_fix.fs").getPath().substring(1));
+            shader.link();
+        }catch(IOException err){
+            System.err.println(err);
+        }
+    }
     private void InitShader(){
        /* shader.setAttrib("vPos");
         shader.setUniform("viewproj");
@@ -34,6 +48,8 @@ public class Cube {
         if(gooch){
             try {
                 shader.attachVertexShader(getClass().getResource("/Shaders/cube_gooch.vs").getPath().substring(1));
+                shader.attachTesselationControlShader(getClass().getResource("/Shaders/cube_fix.tc").getPath().substring(1));
+                shader.attachTesselationEvaluationShader(getClass().getResource("/Shaders/cube_fix.te").getPath().substring(1));
                 shader.attachGeometryShader(getClass().getResource("/Shaders/cube_gooch.gs").getPath().substring(1));
                 shader.attachFragmentShader(getClass().getResource("/Shaders/cube_gooch.fs").getPath().substring(1));
                 shader.link();
@@ -43,8 +59,12 @@ public class Cube {
         }
         else{
             try {
-                shader.attachVertexShader(getClass().getResource("/Shaders/vertex.vs").getPath().substring(1));
-                shader.attachFragmentShader(getClass().getResource("/Shaders/fragment.fs").getPath().substring(1));
+                //shader.attachVertexShader(getClass().getResource("/Shaders/vertex.vs").getPath().substring(1));
+                //shader.attachFragmentShader(getClass().getResource("/Shaders/fragment.fs").getPath().substring(1));
+                shader.attachVertexShader(getClass().getResource("/Shaders/cube_fix.vs").getPath().substring(1));
+                shader.attachTesselationControlShader(getClass().getResource("/Shaders/cube_fix.tc").getPath().substring(1));
+                shader.attachTesselationEvaluationShader(getClass().getResource("/Shaders/cube_fix.te").getPath().substring(1));
+                shader.attachFragmentShader(getClass().getResource("/Shaders/cube_fix.fs").getPath().substring(1));
                 shader.link();
             }catch(IOException err){
                 System.err.println(err);
@@ -146,23 +166,25 @@ public class Cube {
         view.get(fb_view);
         proj.get(fb_proj);
 
-
-        if(gooch){
-            glUniformMatrix4fv(shader.getUniform("view"),false,fb_view);
-            glUniformMatrix4fv(shader.getUniform("projection"),false,fb_proj);
-            glUniformMatrix4fv(shader.getUniform("model"),false,fb_model);
-            glUniform4f(shader.getUniform("vCol"),0.6f,0.6f,0.0f,1.0f);
-            glUniform3f(shader.getUniform("light.pos"),0.0f,3.0f,-5.0f);
-            glUniform3f(shader.getUniform("light.col"),1.0f,1.0f,1.0f);
+        glUniformMatrix4fv(shader.getUniform("view"),false,fb_view);
+        glUniformMatrix4fv(shader.getUniform("projection"),false,fb_proj);
+        glUniformMatrix4fv(shader.getUniform("model"),false,fb_model);
+        glUniform4f(shader.getUniform("vCol"),0.6f,0.6f,0.0f,1.0f);
+        glUniform3f(shader.getUniform("light.pos"),0.0f,3.0f,-5.0f);
+        glUniform3f(shader.getUniform("light.col"),1.0f,1.0f,1.0f);
+        glUniform3f(shader.getUniform("tessLevelOuter"),4.0f,4.0f,4.0f);
+        glUniform1f(shader.getUniform("tessLevelInner"),8.0f);
+        /*if(gooch){
+            glDrawArrays(GL_TRIANGLES, 0, 36);
         }
         else{
-            glUniformMatrix4fv(shader.getUniform("view"),false,fb_view);
-            glUniformMatrix4fv(shader.getUniform("projection"),false,fb_proj);
-            glUniformMatrix4fv(shader.getUniform("modelMatrix"),false,fb_model);
-
-        }
+            glUniform3f(shader.getUniform("tessLevelOuter"),4.0f,4.0f,4.0f);
+            glUniform1f(shader.getUniform("tessLevelInner"),4.0f);
+            glDrawArrays(GL_PATCHES,0,36);
+        }*/
         // Draw a triangle of 3 vertices
-        glDrawArrays(GL_TRIANGLES, 0, 36);
+        glPatchParameteri(GL_PATCH_VERTICES,36);
+        glDrawArrays(GL_PATCHES,0,36);
 
         shader.unbind();
         glBindVertexArray(0);

@@ -30,7 +30,7 @@ public class Camera {
         RotationSpeed = 1.0f;
         MouseSensitivity = .01f;
 
-        UseMouse = true;
+        UseMouse = false;
 
         // Get the thread stack and push a new frame
         try ( MemoryStack stack = stackPush() ) {

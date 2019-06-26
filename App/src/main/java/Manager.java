@@ -19,6 +19,9 @@ import static org.lwjgl.opengl.GL11.*;
 
 public class Manager {
     private Camera camera;
+    private BMenu menu;
+    private boolean isMenu = true;
+
     private float screen_x;
     private float screen_y;
     private FloatBuffer fb;
@@ -32,6 +35,7 @@ public class Manager {
 
     private SoundSource AudioSource;
     private SoundSource Audio_Bounce;
+    private SoundSource Audio_Bounce2;
     private SoundSource Audio_Explosion;
 
     private String defaultDeviceName;
@@ -65,6 +69,8 @@ public class Manager {
 
     public Manager(){
         setCamera(new Camera());
+        setMenu(new BMenu());
+
         cube = new Cube(true);
         triangle1 = new Triangle(new Vector3f(0.0f,-45.0f,0.0f),new Vector3f(0,0,0),new Vector3f(1,1,1));
         triangle2 = new Triangle(new Vector3f(0.0f,45.0f,0.0f),new Vector3f(0,0,0),new Vector3f(1,1,1));
@@ -95,11 +101,12 @@ public class Manager {
         SoundInit();
 
         alSourcei(Audio_Bounce.sourcePointer,AL_LOOPING,AL_FALSE);
+        alSourcei(Audio_Bounce2.sourcePointer,AL_LOOPING,AL_FALSE);
         alSourcei(Audio_Explosion.sourcePointer,AL_LOOPING,AL_FALSE);
         alSourcei(AudioSource.sourcePointer,AL_LOOPING,AL_TRUE);
         alSourcef(Audio_Explosion.sourcePointer,AL_GAIN,1.0f);
         alSourcef(Audio_Bounce.sourcePointer,AL_GAIN,0.6f);
-        alSourcef(AudioSource.sourcePointer,AL_GAIN,0.4f);
+        alSourcef(AudioSource.sourcePointer,AL_GAIN,0.05f);
         getAudioSource().play();
     }
 
@@ -118,9 +125,11 @@ public class Manager {
         setAudioSource(new SoundSource());
         setAudio_Bounce(new SoundSource());
         setAudio_Explosion(new SoundSource());
+        setAudio_Bounce2(new SoundSource());
         try{
             getAudioSource().LoadOgg(getClass().getResource("/Sound/rsl.ogg").getPath().substring(1));
-            getAudio_Bounce().LoadOgg(getClass().getResource("/Sound/stapler.ogg").getPath().substring(1));
+            getAudio_Bounce().LoadOgg(getClass().getResource("/Sound/bounce1.ogg").getPath().substring(1));
+            getAudio_Bounce2().LoadOgg(getClass().getResource("/Sound/bounce2.ogg").getPath().substring(1));
             getAudio_Explosion().LoadOgg(getClass().getResource("/Sound/Explosion.ogg").getPath().substring(1));
         }catch(IOException err){
             System.err.println(err);
@@ -173,27 +182,34 @@ public class Manager {
     }
 
     public void Update(float dt){
-        getCamera().Update(dt);
-        Vector3f eye = new Vector3f(camera.getPosition());
-        Vector3f target = new Vector3f(eye).add(new Vector3f(camera.getDirection()).mul(5.0f));
-        Vector3f up = new Vector3f(0,1,0);
-
-        view = new Matrix4f().lookAt(eye,target,up);
-        setFb_proj(BufferUtils.createFloatBuffer(16));
-        fb_view = BufferUtils.createFloatBuffer(16);
-        getProj().get(getFb_proj());
-        view.get(fb_view);
-
-        cube.Update(dt);
-        getLogic().Update(dt);
-        //panel.Update(dt);
-
-        if(time  >= 3.0f) {
-            System.out.println("position :" + getCamera().getPosition().x +" "+ getCamera().getPosition().y+" "+ getCamera().getPosition().z+", direction :" + getCamera().getDirection().x +" "+ getCamera().getDirection().y+" "+ getCamera().getDirection().z);
-            //System.out.println("direction :" + getCamera().getDirection().x +" "+ getCamera().getDirection().y+" "+ getCamera().getDirection().z);
-            time = 0;
+        if(isMenu()){
+            getMenu().Update(dt);
         }
-        time += dt;
+        else{
+            getCamera().Update(dt);
+            Vector3f eye = new Vector3f(camera.getPosition());
+            Vector3f target = new Vector3f(eye).add(new Vector3f(camera.getDirection()).mul(5.0f));
+            Vector3f up = new Vector3f(0,1,0);
+
+            view = new Matrix4f().lookAt(eye,target,up);
+            setFb_proj(BufferUtils.createFloatBuffer(16));
+            fb_view = BufferUtils.createFloatBuffer(16);
+            getProj().get(getFb_proj());
+            view.get(fb_view);
+
+            cube.Update(dt);
+            getLogic().Update(dt);
+            //panel.Update(dt);
+
+
+
+            if(time  >= 3.0f) {
+                System.out.println("position :" + getCamera().getPosition().x +" "+ getCamera().getPosition().y+" "+ getCamera().getPosition().z+", direction :" + getCamera().getDirection().x +" "+ getCamera().getDirection().y+" "+ getCamera().getDirection().z);
+                //System.out.println("direction :" + getCamera().getDirection().x +" "+ getCamera().getDirection().y+" "+ getCamera().getDirection().z);
+                time = 0;
+            }
+            time += dt;
+        }
     }
     public void PreRender(){
         cube.Render(view, getProj(),ortho);
@@ -213,24 +229,33 @@ public class Manager {
     }
 
     public void Render(){
-        if(isRenderPassing()){
-            fbo.bind();
+        if(isMenu()){
+            glDisable(GL_DEPTH_TEST);
+            getMenu().Render(view,getProj(),ortho);
             glEnable(GL_DEPTH_TEST);
-            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-            PreRender();
-
-            fbo.unbind();
-
-            PostRender();
-
-            AfterRender();
+            glDepthFunc(GL_LESS);
         }
         else{
-            glEnable(GL_DEPTH_TEST);
-            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-            PreRender();
-            AfterRender();
+            if(isRenderPassing()){
+                fbo.bind();
+                glEnable(GL_DEPTH_TEST);
+                glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+                PreRender();
+
+                fbo.unbind();
+
+                PostRender();
+
+                AfterRender();
+            }
+            else{
+                //glEnable(GL_DEPTH_TEST);
+                //glDepthFunc(GL_LESS);
+                //PreRender();
+                //glDisable(GL_DEPTH_TEST);
+                AfterRender();
+            }
         }
 
     }
@@ -361,5 +386,29 @@ public class Manager {
 
     public void setAudio_Explosion(SoundSource audio_Explosion) {
         Audio_Explosion = audio_Explosion;
+    }
+
+    public BMenu getMenu() {
+        return menu;
+    }
+
+    public void setMenu(BMenu menu) {
+        this.menu = menu;
+    }
+
+    public boolean isMenu() {
+        return isMenu;
+    }
+
+    public void setMenu(boolean menu) {
+        isMenu = menu;
+    }
+
+    public SoundSource getAudio_Bounce2() {
+        return Audio_Bounce2;
+    }
+
+    public void setAudio_Bounce2(SoundSource audio_Bounce2) {
+        Audio_Bounce2 = audio_Bounce2;
     }
 }
