@@ -6,6 +6,7 @@ import org.dyn4j.dynamics.CollisionAdapter;
 import org.dyn4j.geometry.Transform;
 import org.dyn4j.geometry.Vector2;
 import org.joml.Vector2f;
+import org.joml.Vector3f;
 
 import java.util.List;
 
@@ -46,14 +47,19 @@ public class Listeners {
             for(int i = 0 ; i < blocks.size() ; i++){
                 if(blocks.get(i).getBody() == body1){
                     Vector2f pos = new Vector2f(blocks.get(i).getCenter_x(),blocks.get(i).getCenter_y());
-                    Application.getInstance().getManager().getLogic().getPostProcess().AddExp(1000,300,10.0f,1.0f,1.0f,false,pos);
+                    Application.getInstance().getManager().getLogic().getPostProcess().AddExp(1000,300,10.0f,1.0f,1.0f,false,new Vector3f(1,1,1),pos);
                     blocks.remove(blocks.get(i));
                     Application.getInstance().getManager().getLogic().getWorld().removeBody(body1);
                     Application.getInstance().getManager().getAudio_Explosion().play();
                 }
                 if(blocks.get(i).getBody() == body2){
                     Vector2f pos = new Vector2f(blocks.get(i).getCenter_x(),blocks.get(i).getCenter_y());
-                    Application.getInstance().getManager().getLogic().getPostProcess().AddExp(100,300,1.0f,1.0f,1.0f,false,pos);
+                    Vector3f color = new Vector3f((float)(Math.random()),(float)(Math.random()),(float) (Math.random()));
+                    float radius = (float) (Math.random()*10.0f);
+                    float scale =  (float) (Math.random()*10.0f);
+                    float time = scale /4.0f;
+
+                    Application.getInstance().getManager().getLogic().getPostProcess().AddExp(1000,300,radius,scale,time,false,color,pos);
                     blocks.remove(blocks.get(i));
                     Application.getInstance().getManager().getLogic().getWorld().removeBody(body2);
                     Application.getInstance().getManager().getAudio_Explosion().play();

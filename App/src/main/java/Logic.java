@@ -43,7 +43,7 @@ public class Logic{
         this.setM_Panel(m_Panel);
 
         setParalaxScroll(new ParalaxScroll());
-        blocks = new ArrayList<>();
+        setBlocks(new ArrayList<>());
 
 
         Init();
@@ -169,7 +169,7 @@ public class Logic{
 
     private void CreateListeners(){
         getWorld().addListener(new Listeners.Panel_Ball_Listerner(getM_Panel().getBody(), getTest().getBody()));
-        getWorld().addListener(new Listeners.Destroyer_Listener(blocks));
+        getWorld().addListener(new Listeners.Destroyer_Listener(getBlocks()));
         getWorld().addListener(new Listeners.Ball_BWall(test.getBody(),b_wall.getBody(),l_wall.getBody(),r_wall.getBody(),t_wall.getBody()));
     }
 
@@ -337,18 +337,18 @@ public class Logic{
                 body.setMass(Mass.Type.INFINITE);
                 body.translate(temp.getCenter_x(),temp.getCenter_y());
                 temp.setBody(body);
-                blocks.add(temp);
+                getBlocks().add(temp);
                 getWorld().addBody(body);
             }
         }catch(Exception err){
             System.err.println(err);
         }
-        System.out.println("Sideblocks number :" + blocks.size());
+        System.out.println("Sideblocks number :" + getBlocks().size());
     }
 
     private void RenderSideBlocks(Matrix4f view, Matrix4f proj, Matrix4f ortho){
         for (Panel panel:
-             blocks) {
+                getBlocks()) {
             panel.Render(view,proj,ortho);
         }
     }
@@ -468,5 +468,13 @@ public class Logic{
 
     public void setPostProcess(PostProcess postProcess) {
         this.postProcess = postProcess;
+    }
+
+    public List<Panel> getBlocks() {
+        return blocks;
+    }
+
+    public void setBlocks(List<Panel> blocks) {
+        this.blocks = blocks;
     }
 }

@@ -2,7 +2,6 @@ import org.dyn4j.geometry.Vector2;
 import org.joml.Matrix4f;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
-import org.joml.Vector4f;
 import org.lwjgl.BufferUtils;
 
 import java.io.IOException;
@@ -13,7 +12,6 @@ import static org.lwjgl.opengl.GL15.*;
 import static org.lwjgl.opengl.GL20.*;
 import static org.lwjgl.opengl.GL30.*;
 import static org.lwjgl.opengl.GL42.*;
-import static org.lwjgl.opengl.GL43.*;
 
 public class Explosion extends Model{
 
@@ -23,8 +21,10 @@ public class Explosion extends Model{
     private float radius;
     private float time = 0.0f;
     private float time_end;
+    private float alpha = 0.7f;
     private boolean isLooping;
     private boolean isActive = true;
+    private Vector3f color;
 
     private Shader shader;
     private int bilboard_buffer;
@@ -33,20 +33,21 @@ public class Explosion extends Model{
     private int position_buffer3;
     private int position_buffer4;
     private int direction_buffer;
-    private int color_buffer;
+    private FloatBuffer color_buffer;
     private FloatBuffer models_buffer1;
     private FloatBuffer models_buffer2;
     private FloatBuffer models_buffer3;
     private FloatBuffer models_buffer4;
     private FloatBuffer models_direction;
 
-    public Explosion(int particles_count, float speedModifier,float radius,float scale,float time_end,boolean isLooping ,Vector2f position){
-        this.particles_count = particles_count;
-        this.speedModifier = speedModifier;
-        this.time_end = time_end;
-        this.isLooping = isLooping;
-        this.radius = radius;
-        this.particle_scale = scale;
+    public Explosion(int particles_count, float speedModifier,float radius,float scale,float time_end,boolean isLooping ,Vector3f color,Vector2f position){
+        this.setParticles_count(particles_count);
+        this.setSpeedModifier(speedModifier);
+        this.setTime_end(time_end);
+        this.setLooping(isLooping);
+        this.setRadius(radius);
+        this.setParticle_scale(scale);
+        this.color = color;
         this.setPosition(new Vector3f(position.x,position.y,0.0f));
         Init();
     }
@@ -72,6 +73,7 @@ public class Explosion extends Model{
 
         CreateModelMatrixesBuffer();
         CreateModelMatrixes();
+        getColor().get(color_buffer);
 
         position_buffer1 = glGenBuffers();
         glBindBuffer(GL_ARRAY_BUFFER,position_buffer1);
@@ -130,24 +132,40 @@ public class Explosion extends Model{
     }
 
     private void CreateModelMatrixesBuffer(){
-        models_buffer1 = BufferUtils.createFloatBuffer(particles_count*4);
-        models_buffer2 = BufferUtils.createFloatBuffer(particles_count*4);
-        models_buffer3 = BufferUtils.createFloatBuffer(particles_count*4);
-        models_buffer4 = BufferUtils.createFloatBuffer(particles_count*4);
-        models_direction = BufferUtils.createFloatBuffer(particles_count*2);
+        models_buffer1 = BufferUtils.createFloatBuffer(getParticles_count() *4);
+        models_buffer2 = BufferUtils.createFloatBuffer(getParticles_count() *4);
+        models_buffer3 = BufferUtils.createFloatBuffer(getParticles_count() *4);
+        models_buffer4 = BufferUtils.createFloatBuffer(getParticles_count() *4);
+        models_direction = BufferUtils.createFloatBuffer(getParticles_count() *2);
+        color_buffer = BufferUtils.createFloatBuffer(3);
     }
 
-    private void CreateModelMatrixes(){
-        for(int i = 0 ; i < particles_count ; i++){
+    private void DeJongAttractor(){
+        float x = 0.0f;
+        float y = 0.0f;
+        for(int i = 0 ; i < getParticles_count();i++){
             Matrix4f model = new Matrix4f();
             model.zero();
             model.m00(1);
             model.m11(1);
             model.m22(1);
             model.m33(1);
-            float angle = (float)i/(float)particles_count*360.0f;
-            float x = (float) (Math.sin(angle)*radius);
-            float y = (float) (Math.cos(angle)*radius);
+
+
+        }
+    }
+
+    private void CreateModelMatrixes(){
+        for(int i = 0; i < getParticles_count(); i++){
+            Matrix4f model = new Matrix4f();
+            model.zero();
+            model.m00(1);
+            model.m11(1);
+            model.m22(1);
+            model.m33(1);
+            float angle = (float)i/(float) getParticles_count() *360.0f;
+            float x = (float) (Math.sin(angle)* getRadius());
+            float y = (float) (Math.cos(angle)* getRadius());
             Vector2 center = new Vector2(getPosition().x,getPosition().y);
             Vector2 direction = new Vector2(x,y);
             direction.normalize();
@@ -200,35 +218,118 @@ public class Explosion extends Model{
 
     @Override
     public void Update(float dt) {
-        if(isActive){
-            //particle_scale += dt;
+        if(isActive()){
             time += dt;
-            if(time >= time_end){
-                if(isLooping)time = 0.0f;
-                else isActive = false;
+            particle_scale -= dt*dt;
+            if(particle_scale <= 0)particle_scale = 1.0f;
+
+            if(time >= getTime_end()){
+                if(isLooping())time = 0.0f;
+                else setActive(false);
             }
         }
     }
 
     @Override
     public void Render(Matrix4f view, Matrix4f proj, Matrix4f ortho) {
-        if(isActive){
+        if(isActive()){
             glBindVertexArray(getVAO());
             shader.bind();
 
             FloatBuffer fb_proj = BufferUtils.createFloatBuffer(16);
             ortho.get(fb_proj);
 
-            glUniform1f(shader.getUniform("speedModifier"),speedModifier);
+            glUniform3fv(shader.getUniform("vcol"),color_buffer);
+            glUniform1f(shader.getUniform("alpha"),alpha);
+            glUniform1f(shader.getUniform("speedModifier"), getSpeedModifier());
             glUniform1f(shader.getUniform("time"),time);
             glUniform1f(shader.getUniform("screen_x"),Application.getInstance().getManager().getScreen_x());
             glUniform1f(shader.getUniform("screen_y"),Application.getInstance().getManager().getScreen_y());
-            glUniform1f(shader.getUniform("scale"),particle_scale);
+            glUniform1f(shader.getUniform("scale"), getParticle_scale());
             glUniformMatrix4fv(shader.getUniform("projection"),false,fb_proj);
 
 
-            glDrawArraysInstanced(GL_TRIANGLE_STRIP,0,4,particles_count);
+            glEnable(GL_BLEND);
+            glBlendFunc(GL_ONE,GL_ONE);
+
+            glDrawArraysInstanced(GL_TRIANGLE_STRIP,0,4, getParticles_count());
+
+            glDisable(GL_BLEND);
+
             glBindVertexArray(0);
         }
+    }
+
+    public Vector3f getColor() {
+        return color;
+    }
+
+    public void setColor(Vector3f color) {
+        this.color = color;
+        color.get(color_buffer);
+    }
+
+    public int getParticles_count() {
+        return particles_count;
+    }
+
+    public void setParticles_count(int particles_count) {
+        this.particles_count = particles_count;
+    }
+
+    public float getSpeedModifier() {
+        return speedModifier;
+    }
+
+    public void setSpeedModifier(float speedModifier) {
+        this.speedModifier = speedModifier;
+    }
+
+    public float getParticle_scale() {
+        return particle_scale;
+    }
+
+    public void setParticle_scale(float particle_scale) {
+        this.particle_scale = particle_scale;
+    }
+
+    public float getRadius() {
+        return radius;
+    }
+
+    public void setRadius(float radius) {
+        this.radius = radius;
+    }
+
+    public float getTime_end() {
+        return time_end;
+    }
+
+    public void setTime_end(float time_end) {
+        this.time_end = time_end;
+    }
+
+    public boolean isLooping() {
+        return isLooping;
+    }
+
+    public void setLooping(boolean looping) {
+        isLooping = looping;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
+    }
+
+    public float getAlpha() {
+        return alpha;
+    }
+
+    public void setAlpha(float alpha) {
+        this.alpha = alpha;
     }
 }

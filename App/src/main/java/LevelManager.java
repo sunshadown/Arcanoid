@@ -13,6 +13,8 @@ public class LevelManager {
     public void LoadActualLevel(){
         if(isPlaying) return;
 
+        //Application.getInstance().getManager().getLogic().getBlocks().clear();
+
         switch (level){
             case 1:Level_1();break;
             case 2:Level_2();break;

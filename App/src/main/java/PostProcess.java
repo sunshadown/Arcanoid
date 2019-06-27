@@ -18,7 +18,7 @@ public class PostProcess {
         panels = new ArrayList<>();
         this.father = father;
         GenerateFollowers();
-        explosion = new Explosion(100,80.0f,1.0f,1.0f,2.0f,true, new Vector2f(100,100));
+        explosion = new Explosion(100,80.0f,1.0f,1.0f,2.0f,true,new Vector3f(1,1,1), new Vector2f(100,100));
         explosions = new ArrayList<>();
     }
 
@@ -43,10 +43,13 @@ public class PostProcess {
             panels.get(i).getM_panel().Update(dt);
         }
 
+        List<Explosion>found = new ArrayList<>();
         for (Explosion exp:
              explosions) {
             exp.Update(dt);
+            if(!exp.isActive())found.add(exp);
         }
+        explosions.removeAll(found);
     }
 
     public void Render(Matrix4f view, Matrix4f proj, Matrix4f ortho){
@@ -93,8 +96,8 @@ public class PostProcess {
         }
     }
 
-    public void AddExp(int particles_count, float speedModifier,float radius,float scale,float time_end,boolean isLooping ,Vector2f position){
-        Explosion exp = new Explosion(particles_count,speedModifier,radius,scale,time_end,isLooping,position);
+    public void AddExp(int particles_count, float speedModifier,float radius,float scale,float time_end,boolean isLooping ,Vector3f color ,Vector2f position){
+        Explosion exp = new Explosion(particles_count,speedModifier,radius,scale,time_end,isLooping,color,position);
         explosions.add(exp);
     }
 }
