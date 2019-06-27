@@ -11,13 +11,15 @@ public class PostProcess {
     private Panel father;
     private int number;
     private Explosion explosion;
+    private List<Explosion>explosions;
 
     public PostProcess(Panel father){
         number = 50;
         panels = new ArrayList<>();
         this.father = father;
         GenerateFollowers();
-        explosion = new Explosion();
+        explosion = new Explosion(100,80.0f,1.0f,1.0f,2.0f,true, new Vector2f(100,100));
+        explosions = new ArrayList<>();
     }
 
     public void Update(float dt){
@@ -26,7 +28,7 @@ public class PostProcess {
             Vector3f pos_panel = new Vector3f(panels.get(i).getM_panel().getPosition());
 
 
-            Vector2 p_ball = new Vector2(pos_ball.x,pos_ball.y);
+            Vector2 p_ball = new Vector2(pos_ball.x+25.0f,pos_ball.y+25.0f);
             Vector2 p_panel = new Vector2(pos_panel.x,pos_panel.y);
             Vector2 p_dir = new Vector2(p_ball.x - p_panel.x,p_ball.y - p_panel.y);
             double mag = p_dir.getMagnitudeSquared();
@@ -41,7 +43,10 @@ public class PostProcess {
             panels.get(i).getM_panel().Update(dt);
         }
 
-        explosion.Update(dt);
+        for (Explosion exp:
+             explosions) {
+            exp.Update(dt);
+        }
     }
 
     public void Render(Matrix4f view, Matrix4f proj, Matrix4f ortho){
@@ -51,14 +56,17 @@ public class PostProcess {
             Vector3f pos_panel = new Vector3f(panel.getM_panel().getPosition());
 
 
-            Vector2 p_ball = new Vector2(pos_ball.x,pos_ball.y);
+            Vector2 p_ball = new Vector2(pos_ball.x+25.0f,pos_ball.y+25.0f);
             Vector2 p_panel = new Vector2(pos_panel.x,pos_panel.y);
             Vector2 p_dir = new Vector2(p_ball.x - p_panel.x,p_ball.y - p_panel.y);
             double mag = p_dir.getMagnitudeSquared();
             //System.out.println(mag);
             if(mag > 3000) panel.Render(view,proj,ortho);
         }
-        explosion.Render(view, proj, ortho);
+        for (Explosion exp:
+                explosions) {
+            exp.Render(view, proj, ortho);
+        }
     }
 
     public Vector3f CalculateDirection(Panel panel){
@@ -83,5 +91,10 @@ public class PostProcess {
             panel.getM_panel().setM_depth(0+i*0.01f+0.01f);
             panels.add(panel);
         }
+    }
+
+    public void AddExp(int particles_count, float speedModifier,float radius,float scale,float time_end,boolean isLooping ,Vector2f position){
+        Explosion exp = new Explosion(particles_count,speedModifier,radius,scale,time_end,isLooping,position);
+        explosions.add(exp);
     }
 }

@@ -45,11 +45,15 @@ public class Listeners {
         public boolean collision(Body body1, BodyFixture fixture1, Body body2, BodyFixture fixture2, Penetration penetration) {
             for(int i = 0 ; i < blocks.size() ; i++){
                 if(blocks.get(i).getBody() == body1){
+                    Vector2f pos = new Vector2f(blocks.get(i).getCenter_x(),blocks.get(i).getCenter_y());
+                    Application.getInstance().getManager().getLogic().getPostProcess().AddExp(1000,300,10.0f,1.0f,1.0f,false,pos);
                     blocks.remove(blocks.get(i));
                     Application.getInstance().getManager().getLogic().getWorld().removeBody(body1);
                     Application.getInstance().getManager().getAudio_Explosion().play();
                 }
                 if(blocks.get(i).getBody() == body2){
+                    Vector2f pos = new Vector2f(blocks.get(i).getCenter_x(),blocks.get(i).getCenter_y());
+                    Application.getInstance().getManager().getLogic().getPostProcess().AddExp(100,300,1.0f,1.0f,1.0f,false,pos);
                     blocks.remove(blocks.get(i));
                     Application.getInstance().getManager().getLogic().getWorld().removeBody(body2);
                     Application.getInstance().getManager().getAudio_Explosion().play();

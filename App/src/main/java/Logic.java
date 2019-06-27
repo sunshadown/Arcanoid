@@ -52,7 +52,7 @@ public class Logic{
         CreateListeners();
 
         setLevelManager(new LevelManager());
-        postProcess = new PostProcess(test);
+        setPostProcess(new PostProcess(test));
     }
 
     private void InitWalls(){
@@ -189,7 +189,7 @@ public class Logic{
         getWorld().update(dt);
         Mover(dt);
         getTest().Update(dt);
-        postProcess.Update(dt);
+        getPostProcess().Update(dt);
 
         time += dt;
         if(time >= 0.2f){
@@ -213,7 +213,7 @@ public class Logic{
 
         getM_Panel().Render(view,proj,ortho);
         getTest().Render(view,proj,ortho);
-        postProcess.Render(view,proj,ortho);
+        getPostProcess().Render(view,proj,ortho);
 
         panel_ball_l.Render(view,proj,ortho);
         panel_ball_r.Render(view,proj,ortho);
@@ -460,5 +460,13 @@ public class Logic{
 
     public void setCanPush(boolean canPush) {
         this.canPush = canPush;
+    }
+
+    public PostProcess getPostProcess() {
+        return postProcess;
+    }
+
+    public void setPostProcess(PostProcess postProcess) {
+        this.postProcess = postProcess;
     }
 }
