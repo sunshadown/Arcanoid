@@ -17,6 +17,7 @@ import static org.lwjgl.system.MemoryUtil.*;
 public class Application {
     private long window;
     private long monitor;
+    private long cursor;
     private Manager manager;
 
     private static Application instance;
@@ -72,6 +73,55 @@ public class Application {
 
         if ( getWindow() == NULL )
             throw new RuntimeException("Failed to create the GLFW window");
+
+        // Get the thread stack and push a new frame
+        try ( MemoryStack stack = stackPush() ) {
+            IntBuffer pWidth = stack.mallocInt(1); // int*
+            IntBuffer pHeight = stack.mallocInt(1); // int*
+
+            // Get the window size passed to glfwCreateWindow
+            glfwGetWindowSize(getWindow(), pWidth, pHeight);
+
+            // Get the resolution of the primary monitor
+            GLFWVidMode vidmode = glfwGetVideoMode(glfwGetPrimaryMonitor());
+
+            // Center the window
+            glfwSetWindowPos(
+                    getWindow(),
+                    (vidmode.width() - pWidth.get(0)) / 2,
+                    (vidmode.height() - pHeight.get(0)) / 2
+            );
+        } // the stack frame is popped automatically
+
+
+        glfwSetWindowMonitor(getWindow(), getMonitor(),0,0,1920,1080,60);
+        glfwSetInputMode(window,GLFW_CURSOR,GLFW_CURSOR_NORMAL);
+        // Make the OpenGL context current
+        glfwMakeContextCurrent(window);
+        GL.createCapabilities();
+        // Enable v-sync
+        glfwSwapInterval(1);
+        glEnable(GL_DEPTH_TEST);
+
+        String opengl_version = glGetString(GL_VERSION);
+        System.out.println("OpenGL version : " + opengl_version);
+
+        Texture.isCursor = true;
+        Texture CurTex = Texture.loadTexture(getClass().getResource("/Images/cursor.png").getPath().substring(1));
+        Texture.isCursor = false;
+
+        GLFWImage cur_image = GLFWImage.create();
+        cur_image.width(CurTex.getWidth());
+        cur_image.height(CurTex.getHeight());
+        cur_image.pixels(CurTex.getM_data());
+        cursor = GLFW.glfwCreateCursor(cur_image,(95/2)-5,95/2);
+        glfwSetCursor(window,cursor);
+
+        setManager(new Manager());
+
+        GLFWCursorPosCallback glfwCursorPosCallback = glfwSetCursorPosCallback(window,(window,xpos,ypos)->{
+            getManager().getMenu().CheckFocus(xpos,ypos);
+        });
 
         GLFWMouseButtonCallback glfwMouseButtonCallback = glfwSetMouseButtonCallback(window,(window,button,action,mods)->{
             if(button == GLFW_MOUSE_BUTTON_1 && action == GLFW_PRESS){
@@ -152,40 +202,6 @@ public class Application {
             }
         });
 
-        // Get the thread stack and push a new frame
-        try ( MemoryStack stack = stackPush() ) {
-            IntBuffer pWidth = stack.mallocInt(1); // int*
-            IntBuffer pHeight = stack.mallocInt(1); // int*
-
-            // Get the window size passed to glfwCreateWindow
-            glfwGetWindowSize(getWindow(), pWidth, pHeight);
-
-            // Get the resolution of the primary monitor
-            GLFWVidMode vidmode = glfwGetVideoMode(glfwGetPrimaryMonitor());
-
-            // Center the window
-            glfwSetWindowPos(
-                    getWindow(),
-                    (vidmode.width() - pWidth.get(0)) / 2,
-                    (vidmode.height() - pHeight.get(0)) / 2
-            );
-        } // the stack frame is popped automatically
-
-
-        glfwSetWindowMonitor(getWindow(), getMonitor(),0,0,1920,1080,60);
-        glfwSetInputMode(window,GLFW_CURSOR,GLFW_CURSOR_NORMAL);
-        // Make the OpenGL context current
-        glfwMakeContextCurrent(window);
-        GL.createCapabilities();
-        // Enable v-sync
-        glfwSwapInterval(1);
-        glEnable(GL_DEPTH_TEST);
-
-        String opengl_version = glGetString(GL_VERSION);
-        System.out.println("OpenGL version : " + opengl_version);
-
-        setManager(new Manager());
-
         GLFWWindowSizeCallback glfwWindowSizeCallback = glfwSetWindowSizeCallback(getWindow(),(window,w,h)->{
             float aspect = (float)w / h; // Wspolczynnik proporcji dlugosci bokow
             instance.getManager().setProj(new Matrix4f().perspective((float)Math.toRadians(90),aspect,0.01f,1000.0f));
@@ -207,13 +223,13 @@ public class Application {
         // Make the window visible
         //glfwSetWindowAttrib(window,GLFW_FOCUS_ON_SHOW,GLFW_TRUE);
         //glfwRequestWindowAttention(window);
-        //glfwShowWindow(getWindow());
-        //glfwFocusWindow(window);
+        glfwShowWindow(getWindow());
+        glfwFocusWindow(window);
     }
 
     private void loop() {
         // Set the clear color
-        glClearColor(0.6f, 0.4f, 0.2f, 0.0f);
+        glClearColor(0.67f, 0.67f, 0.67f, 0.0f);
 
         double last = glfwGetTime();
         double currentTime = 0;

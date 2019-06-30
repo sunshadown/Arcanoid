@@ -38,6 +38,18 @@
             <id>imgui</id>
             <url>https://bintray.com/bintray/jcenter</url>
         </repository>
+
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+        </repository>
+
+        <!-- still needed for some other dependencies not yet available in central like jglfont -->
+        <repository>
+            <id>nifty-maven-repo.sourceforge.net</id>
+            <url>http://nifty-gui.sourceforge.net/nifty-maven-repo</url>
+        </repository>
+
     </repositories>
 
     <dependencies>
@@ -453,6 +465,11 @@
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
             <version>16.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.nifty-gui</groupId>
+            <artifactId>nifty</artifactId>
+            <version>1.4.3</version>
         </dependency>
 
     </dependencies>

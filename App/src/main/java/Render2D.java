@@ -25,6 +25,7 @@ public class Render2D extends Model{
     private Vector2f size;
     private float rotate;
     private float m_depth = 0.0f;
+    private float m_alpha = 1.0f;
     private float time = 0.0f;
 
     public Render2D(){
@@ -79,6 +80,7 @@ public class Render2D extends Model{
 
         glUniform1i(getShader().getUniform("mySampler"), 0);
         glUniform1i(getShader().getUniform("filtertype"), getFiltertype());
+        glUniform1f(getShader().getUniform("m_alpha"),m_alpha);
 
         glActiveTexture(GL_TEXTURE0);
         if (isFBOtex)
@@ -116,6 +118,7 @@ public class Render2D extends Model{
             model.rotate((float)Math.toRadians(rotate),0,0,1);
             model.translate(getSize().x *-0.5f,-0.5f* getSize().y,0.0f);
             model.scale(getSize().x, getSize().y,1.0f);
+            model.scale(getScale());
             model.get(modelbuf);
             ortho.get(orthobuf);
             glUniformMatrix4fv(getShader().getUniform("model"),false,modelbuf);
@@ -133,8 +136,8 @@ public class Render2D extends Model{
 
     private void InitBuffer(){
         setVAO(glGenVertexArrays());
-        VBO = glGenBuffers();
-        EBO = glGenBuffers();
+        setVBO(glGenBuffers());
+        setEBO(glGenBuffers());
 
         float []tab = {
                 -1.0f,-1.0f,
@@ -158,7 +161,7 @@ public class Render2D extends Model{
         if(isFixedSize){
             floatBuffer = BufferUtils.createFloatBuffer(vertices.length);
             floatBuffer.put(vertices).flip();
-            glBindBuffer(GL_ARRAY_BUFFER,VBO);
+            glBindBuffer(GL_ARRAY_BUFFER, getVBO());
             glBufferData(GL_ARRAY_BUFFER,floatBuffer,GL_STATIC_DRAW);
             glEnableVertexAttribArray(getShader().getAttrib("vPosition"));
             glVertexAttribPointer(getShader().getAttrib("vPosition"),4,GL_FLOAT,false,0,0);
@@ -166,7 +169,7 @@ public class Render2D extends Model{
         }else{
             floatBuffer = BufferUtils.createFloatBuffer(tab.length);
             floatBuffer.put(tab).flip();
-            glBindBuffer(GL_ARRAY_BUFFER,VBO);
+            glBindBuffer(GL_ARRAY_BUFFER, getVBO());
             glBufferData(GL_ARRAY_BUFFER,floatBuffer,GL_STATIC_DRAW);
             glEnableVertexAttribArray(getShader().getAttrib("vPosition"));
             glVertexAttribPointer(getShader().getAttrib("vPosition"),2,GL_FLOAT,false,0,0);
@@ -176,7 +179,7 @@ public class Render2D extends Model{
 
         IntBuffer intBuffer = BufferUtils.createIntBuffer(indicies.length);
         intBuffer.put(indicies).flip();
-        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,EBO);
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, getEBO());
         glBufferData(GL_ELEMENT_ARRAY_BUFFER,intBuffer,GL_STATIC_DRAW);
 
         glBindVertexArray(0);
@@ -260,5 +263,13 @@ public class Render2D extends Model{
 
     public void setChangingColor(boolean changingColor) {
         isChangingColor = changingColor;
+    }
+
+    public float getM_alpha() {
+        return m_alpha;
+    }
+
+    public void setM_alpha(float m_alpha) {
+        this.m_alpha = m_alpha;
     }
 }

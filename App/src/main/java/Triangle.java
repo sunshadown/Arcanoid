@@ -27,7 +27,7 @@ public class Triangle extends Model {
     public Triangle(Vector3f position,Vector3f rotation,Vector3f scale){
         this.setPosition(position);
         this.rotation = rotation;
-        this.scale = scale;
+        this.setScale(scale);
         Init();
     }
     @Override
@@ -55,7 +55,7 @@ public class Triangle extends Model {
         model.m11(1);
         model.m22(1);
         model.m33(1);
-        model.translate(getPosition().x, getPosition().y, getPosition().z).rotate((float)Math.toRadians(rotation.x),1,0,0).rotate((float)Math.toRadians(rotation.x),0,1,0).rotate((float)Math.toRadians(rotation.z),0,0,1).scale(scale.x,scale.y,scale.z);
+        model.translate(getPosition().x, getPosition().y, getPosition().z).rotate((float)Math.toRadians(rotation.x),1,0,0).rotate((float)Math.toRadians(rotation.x),0,1,0).rotate((float)Math.toRadians(rotation.z),0,0,1).scale(getScale().x, getScale().y, getScale().z);
         FloatBuffer fb_view = BufferUtils.createFloatBuffer(16);
         FloatBuffer fb_proj = BufferUtils.createFloatBuffer(16);
         FloatBuffer fb_model = BufferUtils.createFloatBuffer(16);
@@ -79,11 +79,11 @@ public class Triangle extends Model {
 
     private void InitBufferWater(){
         setVAO(glGenVertexArrays());
-        VBO = glGenBuffers();
-        EBO = glGenBuffers();
+        setVBO(glGenBuffers());
+        setEBO(glGenBuffers());
 
         glBindVertexArray(getVAO());
-        glBindBuffer(GL_ARRAY_BUFFER,VBO);
+        glBindBuffer(GL_ARRAY_BUFFER, getVBO());
 
         FloatBuffer floatBuffer = BufferUtils.createFloatBuffer(vertexes.length);
         floatBuffer.put(vertexes).flip();
@@ -92,7 +92,7 @@ public class Triangle extends Model {
         glEnableVertexAttribArray(glGetAttribLocation(getShader().getID(),"vPosition"));
         glVertexAttribPointer(glGetAttribLocation(getShader().getID(),"vPosition"), 3, GL_FLOAT, false, 0, 0);
 
-        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,EBO);
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, getEBO());
 
         intBuffer = BufferUtils.createIntBuffer(indexes.length);
         intBuffer.put(indexes).flip();
@@ -102,10 +102,10 @@ public class Triangle extends Model {
     }
     private void InitBuffer(){
         setVAO(glGenVertexArrays());
-        VBO = glGenBuffers();
+        setVBO(glGenBuffers());
 
         glBindVertexArray(getVAO());
-        glBindBuffer(GL_ARRAY_BUFFER,VBO);
+        glBindBuffer(GL_ARRAY_BUFFER, getVBO());
 
         // The vertices of our Triangle
         float[] vertices = new float[]{

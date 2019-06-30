@@ -4,15 +4,16 @@ import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
 
 import static org.lwjgl.opengl.GL11.*;
-import static org.lwjgl.opengl.GL13.GL_CLAMP_TO_BORDER;
 import static org.lwjgl.stb.STBImage.*;
 
 public class Texture {
     /**
      * Stores the handle of the texture.
      */
+    public static boolean isCursor = false;
     private final int id;
 
+    private ByteBuffer m_data;
     /**
      * Width of the texture.
      */
@@ -129,7 +130,7 @@ public class Texture {
         Texture texture = new Texture();
         texture.setWidth(width);
         texture.setHeight(height);
-
+        texture.setM_data(data);
         texture.bind();
 
         texture.setParameter(GL_TEXTURE_WRAP_S, GL_REPEAT);
@@ -159,7 +160,7 @@ public class Texture {
             IntBuffer comp = stack.mallocInt(1);
 
             /* Load image */
-            stbi_set_flip_vertically_on_load(true);
+            stbi_set_flip_vertically_on_load(!isCursor);
             image = stbi_load(path, w, h, comp, 4);
             if (image == null) {
                 throw new RuntimeException("Failed to load a texture file!"
@@ -172,5 +173,13 @@ public class Texture {
         }
 
         return createTexture(width, height, image);
+    }
+
+    public ByteBuffer getM_data() {
+        return m_data;
+    }
+
+    public void setM_data(ByteBuffer m_data) {
+        this.m_data = m_data;
     }
 }

@@ -44,6 +44,7 @@ public class Manager {
     private ALCCapabilities alcCapabilities;
     private ALCapabilities alCapabilities;
 
+    private Attractor attractor;
     private Cube cube;
     private Model triangle1;
     private Model triangle2;
@@ -69,7 +70,10 @@ public class Manager {
 
     public Manager(){
         setCamera(new Camera());
+        getCamera().AnimateStart();
         setMenu(new BMenu());
+
+        attractor = new Attractor(100000);
 
         cube = new Cube(true);
         triangle1 = new Triangle(new Vector3f(0.0f,-45.0f,0.0f),new Vector3f(0,0,0),new Vector3f(1,1,1));
@@ -182,27 +186,21 @@ public class Manager {
     }
 
     public void Update(float dt){
+        Vector3f eye,target,up;
+        eye = new Vector3f(camera.getPosition());
+        target = new Vector3f(eye).add(new Vector3f(camera.getDirection()).mul(5.0f));
+        up = new Vector3f(0,1,0);
+
         if(isMenu()){
             getMenu().Update(dt);
+            getCamera().Animate(dt);
+            attractor.Update(dt);
         }
         else{
             getCamera().Update(dt);
-            Vector3f eye = new Vector3f(camera.getPosition());
-            Vector3f target = new Vector3f(eye).add(new Vector3f(camera.getDirection()).mul(5.0f));
-            Vector3f up = new Vector3f(0,1,0);
-
-            view = new Matrix4f().lookAt(eye,target,up);
-            setFb_proj(BufferUtils.createFloatBuffer(16));
-            fb_view = BufferUtils.createFloatBuffer(16);
-            getProj().get(getFb_proj());
-            view.get(fb_view);
-
-            cube.Update(dt);
+            //cube.Update(dt);
             getLogic().Update(dt);
             //panel.Update(dt);
-
-
-
             if(time  >= 3.0f) {
                 System.out.println("position :" + getCamera().getPosition().x +" "+ getCamera().getPosition().y+" "+ getCamera().getPosition().z+", direction :" + getCamera().getDirection().x +" "+ getCamera().getDirection().y+" "+ getCamera().getDirection().z);
                 //System.out.println("direction :" + getCamera().getDirection().x +" "+ getCamera().getDirection().y+" "+ getCamera().getDirection().z);
@@ -210,15 +208,21 @@ public class Manager {
             }
             time += dt;
         }
+        view = new Matrix4f().lookAt(eye,target,up);
+        setFb_proj(BufferUtils.createFloatBuffer(16));
+        fb_view = BufferUtils.createFloatBuffer(16);
+        getProj().get(getFb_proj());
+        view.get(fb_view);
     }
     public void PreRender(){
-        cube.Render(view, getProj(),ortho);
-        triangle1.Render(view,getProj(),ortho);
+        //cube.Render(view, getProj(),ortho);
+        /*triangle1.Render(view,getProj(),ortho);
         triangle2.Render(view,getProj(),ortho);
         triangle3.Render(view,getProj(),ortho);
         triangle4.Render(view,getProj(),ortho);
         triangle5.Render(view,getProj(),ortho);
-        triangle6.Render(view,getProj(),ortho);
+        triangle6.Render(view,getProj(),ortho);*/
+
     }
 
     public void AfterRender(){
@@ -231,6 +235,7 @@ public class Manager {
     public void Render(){
         if(isMenu()){
             glDisable(GL_DEPTH_TEST);
+            attractor.Render(view,proj,ortho);
             getMenu().Render(view,getProj(),ortho);
             glEnable(GL_DEPTH_TEST);
             glDepthFunc(GL_LESS);
@@ -250,10 +255,7 @@ public class Manager {
                 AfterRender();
             }
             else{
-                //glEnable(GL_DEPTH_TEST);
-                //glDepthFunc(GL_LESS);
-                //PreRender();
-                //glDisable(GL_DEPTH_TEST);
+                PreRender();
                 AfterRender();
             }
         }

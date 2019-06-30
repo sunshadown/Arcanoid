@@ -1,4 +1,6 @@
+import org.dyn4j.geometry.Vector2;
 import org.joml.Matrix4f;
+import org.joml.Vector2f;
 import org.joml.Vector3f;
 import org.lwjgl.glfw.GLFWVidMode;
 import org.lwjgl.system.MemoryStack;
@@ -20,10 +22,12 @@ public class Camera {
     private double previousMouseX;
     private double previousMouseY;
 
+    private Vector2f target;
+
     Camera(){
         // Domyslne ustawienia kamery:
-        position = new Vector3f((float) -27.491451, (float) -0.044956513, (float) 40.568993);
-        direction = new Vector3f((float)0.66238624, (float)0, (float)-0.7491619);
+        position = new Vector3f((float)0,(float) 0.23350158,(float) 0.3401813);
+        direction = new Vector3f((float)0,(float) 0,(float) -1);
         up = new Vector3f(0, 1, 0);
 
         MovementSpeed = 15.0f;
@@ -123,14 +127,14 @@ public class Camera {
             }
 
             // Uwzglednienie wcisnietych klawiszy:
-            if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS)
+           /* if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS)
             {
                 G -= RotationSpeed * dt * speedModifier;
             }
             if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS)
             {
                 G += RotationSpeed * dt * speedModifier;
-            }
+            }*/
             if (glfwGetKey(window, GLFW_KEY_F) == GLFW_PRESS)
             {
                 T -= RotationSpeed * dt * speedModifier;
@@ -167,6 +171,29 @@ public class Camera {
         //std::cout << direction.x << " "<<direction.y << " "<<direction.z << std::endl;
         //glm::mat4 viewMatrix = glm::lookAt(position, position + direction * 5.0f, up);
         //Application::GetInstance()->SetViewMatrix(viewMatrix);
+    }
+
+    public void AnimateStart(){
+        target = new Vector2f((float)Math.random(),(float)Math.random());
+        target.mul(10.0f);
+    }
+
+    public void Animate(float dt){
+        Vector2f x_boundry = new Vector2f(-10,10);
+        Vector2f y_boundry = new Vector2f(-10,10);
+
+        float x = target.x - position.x;
+        float y = target.y - position.y;
+        Vector2 dir = new Vector2(x,y);
+        float mag = (float) dir.getMagnitudeSquared();
+        if(mag <= 0.2f){
+            AnimateStart();
+            Animate(dt);
+        }
+        dir.normalize();
+
+        position.x += dir.x*dt*0.02f;
+        position.y += dir.y*dt*0.02f;
     }
 
     public Vector3f getPosition() {

@@ -72,7 +72,18 @@ public class Explosion extends Model{
 
 
         CreateModelMatrixesBuffer();
-        CreateModelMatrixes();
+
+        int val = (int) (Math.random()*100);
+        val = val % 2;
+        switch (val){
+            case 0:
+                DeJongAttractor();break;
+            case 1:
+                CreateModelMatrixes();break;
+                default:
+                    DeJongAttractor();
+        }
+
         getColor().get(color_buffer);
 
         position_buffer1 = glGenBuffers();
@@ -141,6 +152,11 @@ public class Explosion extends Model{
     }
 
     private void DeJongAttractor(){
+        float a = (float) (2.01f * Math.random());
+        float b = (float) (-2.53f * Math.random());
+        float c = (float) (1.61f * Math.random());
+        float d = (float) (-0.33f * Math.random());
+
         float x = 0.0f;
         float y = 0.0f;
         for(int i = 0 ; i < getParticles_count();i++){
@@ -151,8 +167,22 @@ public class Explosion extends Model{
             model.m22(1);
             model.m33(1);
 
-
+            float nx = (float) (Math.sin(a*y)*radius - Math.cos(b*x)*radius);
+            float ny = (float) (Math.sin(c*x)*radius - Math.cos(d*y)*radius);
+            model.translate(getPosition().x,getPosition().y,0.0f);
+            model.translate(nx,ny,0.0f);
+            Vector2 direction = new Vector2(nx,ny);
+            direction.normalize();
+            AddMatrix2Buffer(model);
+            AddDirection2Buffer(direction);
+            x = nx;
+            y = ny;
         }
+        models_buffer1.flip();
+        models_buffer2.flip();
+        models_buffer3.flip();
+        models_buffer4.flip();
+        models_direction.flip();
     }
 
     private void CreateModelMatrixes(){

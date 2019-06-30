@@ -6,7 +6,7 @@ out vec4 Color;
 uniform sampler2D mySampler;
 uniform int filtertype;
 uniform float time;
-
+uniform float m_alpha;
 mat3x3 Filter3x3( const int filtertype);
 
 void main()
@@ -25,7 +25,7 @@ void main()
     float t = time;
     vec3 col = sin(t)*red+cos(t)*green+sin(t)*blue;
     col = clamp(col*time,0.0,1.0);
-    Color.xyz = clamp(Color.xyz+col,0.0,1.0);
+    Color.xyz = clamp(Color.xyz+col,0.0,m_alpha);
 }
 
 
