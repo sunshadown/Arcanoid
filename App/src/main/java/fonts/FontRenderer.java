@@ -30,7 +30,7 @@ public class FontRenderer {
 				renderText(text);
 			}
 		}
-
+		endRendering();
 	}
 
 	private void prepare(){

@@ -1,5 +1,12 @@
 package app;
 
+import org.lwjgl.openal.AL;
+import org.lwjgl.openal.ALC;
+import org.lwjgl.openal.ALCCapabilities;
+import org.lwjgl.openal.ALCapabilities;
+import static org.lwjgl.openal.AL10.*;
+import static org.lwjgl.openal.ALC10.*;
+
 import fonts.FontType;
 import fonts.GUIText;
 import fonts.TextMaster;
@@ -8,6 +15,7 @@ import org.joml.Vector2f;
 import org.joml.Vector3f;
 
 import java.io.File;
+import java.io.IOException;
 
 
 public class BMenu {
@@ -15,13 +23,27 @@ public class BMenu {
     private Panel m_exit;
     private Panel m_background;
     private Panel m_settings;
-
-    private FontType font;
-    private Texture texture;
-    private GUIText text;
+    private boolean isFocused = false;
+    private boolean lastFocused = false;
+    private int state = 0;
+    private boolean isPlayed = false;
+    private SoundSource focus_sound;
 
     public BMenu(){
         Init();
+    }
+
+    public void InitSound(){
+        focus_sound = new SoundSource();
+
+        try {
+            focus_sound.LoadOgg(getClass().getResource("/Sound/select.ogg").getPath().substring(1));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        alSourcei(focus_sound.sourcePointer,AL_LOOPING,AL_FALSE);
+        alSourcef(focus_sound.sourcePointer,AL_GAIN,1.0f);
     }
 
     private void Init(){
@@ -30,12 +52,6 @@ public class BMenu {
         m_start = new Panel(100,50,new Vector2f(100,100),getClass().getResource("/Images/14.png").getPath().substring(1));
         m_exit = new Panel(250,50,new Vector2f(100,100),getClass().getResource("/Images/13.png").getPath().substring(1));
         m_settings = new Panel(400,50,new Vector2f(100,100),getClass().getResource("/Images/11.png").getPath().substring(1));
-
-        TextMaster.Init();
-        texture = Texture.loadTexture(getClass().getResource("/font/arial.png").getPath().substring(1));
-        font = new FontType(texture.getId(),new File(getClass().getResource("/font/arial.fnt").getPath().substring(1)));
-        text = new GUIText("tekst",1,font,new Vector2f(0,0),1f,false);
-        text.setColour(1,0,0);
     }
 
     public void Update(float dt){
@@ -44,15 +60,44 @@ public class BMenu {
         m_background.getM_panel().setM_alpha(alpha);
     }
 
+    private void CheckState(){
+
+    }
+
     public void CheckFocus(double xpos,double ypos){
-        if(Check_Start(xpos,1080-ypos))m_start.getM_panel().setScale(new Vector3f(1.5f,1.5f,1.5f));
-        else m_start.getM_panel().setScale(new Vector3f(1,1,1));
+        isFocused = false;
 
-        if(Check_Exit(xpos,1080-ypos))m_exit.getM_panel().setScale(new Vector3f(1.5f,1.5f,1.5f));
-        else m_exit.getM_panel().setScale(new Vector3f(1,1,1));
+        if(Check_Start(xpos,1080-ypos)){
+            m_start.getM_panel().setScale(new Vector3f(1.5f,1.5f,1.5f));
+            isFocused = true;
+        }
+        else {
+            m_start.getM_panel().setScale(new Vector3f(1,1,1));
+            isPlayed = false;
+        }
 
-        if(Check_Settings(xpos,1080-ypos))m_settings.getM_panel().setScale(new Vector3f(1.5f,1.5f,1.5f));
-        else m_settings.getM_panel().setScale(new Vector3f(1,1,1));
+        if(Check_Exit(xpos,1080-ypos)){
+            m_exit.getM_panel().setScale(new Vector3f(1.5f,1.5f,1.5f));
+            isFocused = true;
+        }
+        else {
+            m_exit.getM_panel().setScale(new Vector3f(1,1,1));
+            isPlayed = false;
+        }
+
+        if(Check_Settings(xpos,1080-ypos)){
+            m_settings.getM_panel().setScale(new Vector3f(1.5f,1.5f,1.5f));
+            isFocused = true;
+        }
+        else {
+            m_settings.getM_panel().setScale(new Vector3f(1,1,1));
+            isPlayed = false;
+        }
+
+        if(isFocused && !isPlayed){
+            focus_sound.play();
+            isPlayed = true;
+        }
     }
 
     public void Render(Matrix4f view, Matrix4f proj, Matrix4f ortho){
@@ -60,7 +105,6 @@ public class BMenu {
         m_start.Render(view,proj,ortho);
         m_exit.Render(view,proj,ortho);
         m_settings.Render(view,proj,ortho);
-        TextMaster.Render();
     }
 
     public boolean Check_Start(double mouse_x,double mouse_y){

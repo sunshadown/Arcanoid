@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.lwjgl.openal.AL10.*;
-
 import static org.lwjgl.openal.ALC10.*;
 import static org.lwjgl.opengl.GL11.*;
 
@@ -132,6 +131,7 @@ public class Manager {
         setAudio_Bounce(new SoundSource());
         setAudio_Explosion(new SoundSource());
         setAudio_Bounce2(new SoundSource());
+        getMenu().InitSound();
         try{
             getAudioSource().LoadOgg(getClass().getResource("/Sound/rsl.ogg").getPath().substring(1));
             getAudio_Bounce().LoadOgg(getClass().getResource("/Sound/bounce1.ogg").getPath().substring(1));
