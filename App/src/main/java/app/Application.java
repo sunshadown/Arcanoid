@@ -2,7 +2,6 @@ package app;
 
 import org.dyn4j.geometry.Vector2;
 import org.joml.Matrix4f;
-import org.lwjgl.*;
 import org.lwjgl.glfw.*;
 import org.lwjgl.opengl.*;
 import org.lwjgl.system.*;
@@ -21,6 +20,7 @@ public class Application {
     private long monitor;
     private long cursor;
     private Manager manager;
+    private String app_path;
 
     private static Application instance;
     private static boolean isWireframe = false;
@@ -31,7 +31,7 @@ public class Application {
     }
 
     public void run() {
-        System.out.println("App 1.0 , LWJGL: " + Version.getVersion() + "!");
+        //System.out.println("App 1.0 , LWJGL: " + Version.getVersion() + "!");
         init();
         loop();
 
@@ -109,7 +109,14 @@ public class Application {
         System.out.println("OpenGL version : " + opengl_version);
 
         Texture.isCursor = true;
-        Texture CurTex = Texture.loadTexture(getClass().getResource("/Images/cursor.png").getPath().substring(1));
+        String path = Application.class.getProtectionDomain().getCodeSource().getLocation().getPath().substring(1);
+        int length = path.length();
+        path = path.substring(0,length-42);
+        setApp_path(path);
+        String cursorpath = "Images/cursor.png";
+        cursorpath = path.concat(cursorpath);
+        System.out.println(cursorpath);
+        Texture CurTex = Texture.loadTexture(cursorpath);
         Texture.isCursor = false;
 
         GLFWImage cur_image = GLFWImage.create();
@@ -280,5 +287,13 @@ public class Application {
 
     public void setManager(Manager manager) {
         this.manager = manager;
+    }
+
+    public String getApp_path() {
+        return app_path;
+    }
+
+    public void setApp_path(String app_path) {
+        this.app_path = app_path;
     }
 }

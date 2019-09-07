@@ -85,11 +85,11 @@ public class Manager {
         triangle6 = new Triangle(new Vector3f(45.0f,0.0f,0.0f),new Vector3f(0,0,90),new Vector3f(1,1,1));
         renderer = new Render2D();
         setRenderer2(new Render2D(edward_filter,new Vector3f(200,100,0),new Vector2f(300,300),0.0f));
-        ((Render2D) renderer).LoadTex(getClass().getResource("/Images/test3.jpg").getPath().substring(1));
-        ((Render2D) getRenderer2()).LoadTex(getClass().getResource("/Images/test3.jpg").getPath().substring(1));
+        ((Render2D) renderer).LoadTex(Application.getInstance().getApp_path().concat("Images/test3.jpg"));
+        ((Render2D) getRenderer2()).LoadTex(Application.getInstance().getApp_path().concat("Images/test3.jpg"));
 
         //PANEL INIT
-        panel = new Panel(1920/2,50,new Vector2f(200.0f,50.0f),getClass().getResource("/Images/01-Breakout-Tiles.png").getPath().substring(1));
+        panel = new Panel(1920/2,50,new Vector2f(200.0f,50.0f),Application.getInstance().getApp_path().concat("Images/01-Breakout-Tiles.png"));
         setLogic(new Logic(panel));
         //!!!!!!!!!!
         fbo = new FBO(1920,1080);
@@ -133,10 +133,10 @@ public class Manager {
         setAudio_Bounce2(new SoundSource());
         getMenu().InitSound();
         try{
-            getAudioSource().LoadOgg(getClass().getResource("/Sound/rsl.ogg").getPath().substring(1));
-            getAudio_Bounce().LoadOgg(getClass().getResource("/Sound/bounce1.ogg").getPath().substring(1));
-            getAudio_Bounce2().LoadOgg(getClass().getResource("/Sound/bounce2.ogg").getPath().substring(1));
-            getAudio_Explosion().LoadOgg(getClass().getResource("/Sound/Explosion.ogg").getPath().substring(1));
+            getAudioSource().LoadOgg(Application.getInstance().getApp_path().concat("Sound/rsl.ogg"));
+            getAudio_Bounce().LoadOgg(Application.getInstance().getApp_path().concat("Sound/bounce1.ogg"));
+            getAudio_Bounce2().LoadOgg(Application.getInstance().getApp_path().concat("Sound/bounce2.ogg"));
+            getAudio_Explosion().LoadOgg(Application.getInstance().getApp_path().concat("Sound/Explosion.ogg"));
         }catch(IOException err){
             System.err.println(err);
         }

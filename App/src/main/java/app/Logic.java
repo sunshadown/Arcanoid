@@ -58,7 +58,7 @@ public class Logic{
     }
 
     private void InitWalls(){
-        String path = getClass().getResource("/Images/07-Breakout-Tiles.png").getPath().substring(1);
+        String path = Application.getInstance().getApp_path().concat("Images/07-Breakout-Tiles.png");
         l_wall = new Panel(0,0,new Vector2f((float)10,(float)1080),path);
         r_wall = new Panel(1910,0,new Vector2f((float)10,(float)1080),path);
         b_wall = new Panel(10,0,new Vector2f((float)1900,(float)10),path);
@@ -120,7 +120,7 @@ public class Logic{
         panel_body.setMass(Mass.Type.INFINITE);
         panel_body.translate(new Vector2(getM_Panel().getCenter_x(), getM_Panel().getCenter_y() - 5.0f));
 
-        String path = getClass().getResource("/Images/58_2-Breakout-Tiles.png").getPath().substring(1);
+        String path = Application.getInstance().getApp_path().concat("Images/58_2-Breakout-Tiles.png");
         panel_ball_l = new Panel(getM_Panel().getM_panel().getPosition().x ,getM_Panel().getM_panel().getPosition().y+getM_Panel().getM_panel().getSize().y,new Vector2f(25,25),path);
         panel_ball_r = new Panel(getM_Panel().getM_panel().getPosition().x + getM_Panel().getM_panel().getSize().x-25,getM_Panel().getM_panel().getPosition().y+getM_Panel().getM_panel().getSize().y,new Vector2f(25,25),path);
         Body l_ball = new Body();
@@ -149,7 +149,7 @@ public class Logic{
         getWorld().addBody(panel_body);
 
 
-        setTest(new Panel(screen_x/2,200,new Vector2f(50.0f,50.0f),getClass().getResource("/Images/58-Breakout-Tiles.png").getPath().substring(1)));
+        setTest(new Panel(screen_x/2,200,new Vector2f(50.0f,50.0f),Application.getInstance().getApp_path().concat("Images/58-Breakout-Tiles.png")));
         //test.getM_panel().setAdditive(true);
 
         Body test_body = new Body();
@@ -246,7 +246,7 @@ public class Logic{
         Vector2f starting_pos = new Vector2f(10,10);
         Vector2f size_of_life = new Vector2f(50,50);
         float offset = 5.0f;
-        String path = getClass().getResource("/Images/heart_full_32x32.png").getPath().substring(1);
+        String path = Application.getInstance().getApp_path().concat("Images/heart_full_32x32.png");
         for(int i = 0; i < getNumber_of_lifes(); i++){
             Panel temp = new Panel(starting_pos.x + i*size_of_life.x+offset,starting_pos.y,size_of_life,path);
             lifes.add(temp);
@@ -268,14 +268,14 @@ public class Logic{
             int max_number_of_blocks = (int) (width / (size_of_Block.x + offset));
 
             System.out.println("max number of blocks : " + max_number_of_blocks);
-            String green = getClass().getResource("/Images/03-Breakout-Tiles.png").getPath().substring(1);
-            String red = getClass().getResource("/Images/07-Breakout-Tiles.png").getPath().substring(1);
-            String yellow = getClass().getResource("/Images/13-Breakout-Tiles.png").getPath().substring(1);
-            String green2 = getClass().getResource("/Images/15-Breakout-Tiles.png").getPath().substring(1);
-            String blue = getClass().getResource("/Images/11-Breakout-Tiles.png").getPath().substring(1);
-            String gray = getClass().getResource("/Images/17-Breakout-Tiles.png").getPath().substring(1);
-            String purple = getClass().getResource("/Images/05-Breakout-Tiles.png").getPath().substring(1);
-            String bronze = getClass().getResource("/Images/19-Breakout-Tiles.png").getPath().substring(1);
+            String green = Application.getInstance().getApp_path().concat("Images/03-Breakout-Tiles.png");
+            String red = Application.getInstance().getApp_path().concat("Images/07-Breakout-Tiles.png");
+            String yellow = Application.getInstance().getApp_path().concat("Images/13-Breakout-Tiles.png");
+            String green2 = Application.getInstance().getApp_path().concat("Images/15-Breakout-Tiles.png");
+            String blue = Application.getInstance().getApp_path().concat("Images/11-Breakout-Tiles.png");
+            String gray = Application.getInstance().getApp_path().concat("Images/17-Breakout-Tiles.png");
+            String purple = Application.getInstance().getApp_path().concat("Images/05-Breakout-Tiles.png");
+            String bronze = Application.getInstance().getApp_path().concat("Images/19-Breakout-Tiles.png");
             String path = gray;
 
             Texture texture_green = Texture.loadTexture(green);

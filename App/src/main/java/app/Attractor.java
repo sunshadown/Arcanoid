@@ -153,8 +153,8 @@ public class Attractor  extends  Model{
     private void InitShader(){
         setShader(new Shader());
         try {
-            getShader().attachVertexShader(getClass().getResource("/Shaders/attractor.vs").getPath().substring(1));
-            getShader().attachFragmentShader(getClass().getResource("/Shaders/attractor.fs").getPath().substring(1));
+            getShader().attachVertexShader(Application.getInstance().getApp_path().concat("Shaders/attractor.vs"));
+            getShader().attachFragmentShader(Application.getInstance().getApp_path().concat("Shaders/attractor.fs"));
             getShader().link();
         } catch (IOException e) {
             e.printStackTrace();

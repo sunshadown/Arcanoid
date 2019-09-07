@@ -143,9 +143,9 @@ public class Triangle extends Model {
 
     private void InitShader(){
         try {
-            getShader().attachVertexShader(getClass().getResource("/Shaders/phong.vs").getPath().substring(1));
-            getShader().attachGeometryShader(getClass().getResource("/Shaders/phong.gs").getPath().substring(1));
-            getShader().attachFragmentShader(getClass().getResource("/Shaders/phong.fs").getPath().substring(1));
+            getShader().attachVertexShader(Application.getInstance().getApp_path().concat("Shaders/phong.vs"));
+            getShader().attachGeometryShader(Application.getInstance().getApp_path().concat("Shaders/phong.gs"));
+            getShader().attachFragmentShader(Application.getInstance().getApp_path().concat("Shaders/phong.fs"));
             getShader().link();
         }catch(IOException err){
             System.err.println(err);

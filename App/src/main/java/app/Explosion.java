@@ -136,8 +136,8 @@ public class Explosion extends Model{
     private void InitShader(){
         shader = new Shader();
         try {
-            shader.attachVertexShader(getClass().getResource("/Shaders/particle.vs").getPath().substring(1));
-            shader.attachFragmentShader(getClass().getResource("/Shaders/particle.fs").getPath().substring(1));
+            shader.attachVertexShader(Application.getInstance().getApp_path().concat("Shaders/particle.vs"));
+            shader.attachFragmentShader(Application.getInstance().getApp_path().concat("Shaders/particle.fs"));
             shader.link();
         } catch (IOException e) {
             e.printStackTrace();

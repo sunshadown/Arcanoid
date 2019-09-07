@@ -31,10 +31,10 @@ public class Cube {
 
     private void Test(){
         try {
-            shader.attachVertexShader(getClass().getResource("/Shaders/cube_fix.vs").getPath().substring(1));
-            shader.attachTesselationControlShader(getClass().getResource("/Shaders/cube_fix.tc").getPath().substring(1));
-            shader.attachTesselationEvaluationShader(getClass().getResource("/Shaders/cube_fix.te").getPath().substring(1));
-            shader.attachFragmentShader(getClass().getResource("/Shaders/cube_fix.fs").getPath().substring(1));
+            shader.attachVertexShader(Application.getInstance().getApp_path().concat("Shaders/cube_fix.vs"));
+            shader.attachTesselationControlShader(Application.getInstance().getApp_path().concat("Shaders/cube_fix.tc"));
+            shader.attachTesselationEvaluationShader(Application.getInstance().getApp_path().concat("Shaders/cube_fix.te"));
+            shader.attachFragmentShader(Application.getInstance().getApp_path().concat("Shaders/cube_fix.fs"));
             shader.link();
         }catch(IOException err){
             System.err.println(err);
@@ -46,11 +46,11 @@ public class Cube {
         shader.setUniform("modelMatrix");*/
         if(gooch){
             try {
-                shader.attachVertexShader(getClass().getResource("/Shaders/cube_gooch.vs").getPath().substring(1));
-                shader.attachTesselationControlShader(getClass().getResource("/Shaders/cube_fix.tc").getPath().substring(1));
-                shader.attachTesselationEvaluationShader(getClass().getResource("/Shaders/cube_fix.te").getPath().substring(1));
-                shader.attachGeometryShader(getClass().getResource("/Shaders/cube_gooch.gs").getPath().substring(1));
-                shader.attachFragmentShader(getClass().getResource("/Shaders/cube_gooch.fs").getPath().substring(1));
+                shader.attachVertexShader(Application.getInstance().getApp_path().concat("Shaders/cube_gooch.vs"));
+                shader.attachTesselationControlShader(Application.getInstance().getApp_path().concat("Shaders/cube_fix.tc"));
+                shader.attachTesselationEvaluationShader(Application.getInstance().getApp_path().concat("Shaders/cube_fix.te"));
+                shader.attachGeometryShader(Application.getInstance().getApp_path().concat("Shaders/cube_gooch.gs"));
+                shader.attachFragmentShader(Application.getInstance().getApp_path().concat("Shaders/cube_gooch.fs"));
                 shader.link();
             }catch(IOException err){
                 System.err.println(err);
@@ -60,10 +60,10 @@ public class Cube {
             try {
                 //shader.attachVertexShader(getClass().getResource("/Shaders/vertex.vs").getPath().substring(1));
                 //shader.attachFragmentShader(getClass().getResource("/Shaders/fragment.fs").getPath().substring(1));
-                shader.attachVertexShader(getClass().getResource("/Shaders/cube_fix.vs").getPath().substring(1));
-                shader.attachTesselationControlShader(getClass().getResource("/Shaders/cube_fix.tc").getPath().substring(1));
-                shader.attachTesselationEvaluationShader(getClass().getResource("/Shaders/cube_fix.te").getPath().substring(1));
-                shader.attachFragmentShader(getClass().getResource("/Shaders/cube_fix.fs").getPath().substring(1));
+                shader.attachVertexShader(Application.getInstance().getApp_path().concat("Shaders/cube_fix.vs"));
+                shader.attachTesselationControlShader(Application.getInstance().getApp_path().concat("Shaders/cube_fix.tc"));
+                shader.attachTesselationEvaluationShader(Application.getInstance().getApp_path().concat("Shaders/cube_fix.te"));
+                shader.attachFragmentShader(Application.getInstance().getApp_path().concat("Shaders/cube_fix.fs"));
                 shader.link();
             }catch(IOException err){
                 System.err.println(err);

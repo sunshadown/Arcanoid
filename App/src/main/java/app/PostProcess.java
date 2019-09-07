@@ -88,7 +88,7 @@ public class PostProcess {
         Vector3f pos = father.getM_panel().getPosition();
         Vector2f size = new Vector2f(father.getM_panel().getSize());
         size.mul(0.3f);
-        String path = getClass().getResource("/Images/58_2-Breakout-Tiles.png").getPath().substring(1);
+        String path = Application.getInstance().getApp_path().concat("Images/58_2-Breakout-Tiles.png");
         for(int i = 0 ; i < number ;i++){
             Panel panel = new Panel(pos.x,pos.y,size,path);
             panel.getM_panel().setAdditive(true);

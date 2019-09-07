@@ -162,7 +162,8 @@ public class Render2D extends Model{
         FloatBuffer floatBuffer;
         if(isFixedSize){
             floatBuffer = BufferUtils.createFloatBuffer(vertices.length);
-            floatBuffer.put(vertices).flip();
+            floatBuffer.put(vertices);
+            floatBuffer.flip();
             glBindBuffer(GL_ARRAY_BUFFER, getVBO());
             glBufferData(GL_ARRAY_BUFFER,floatBuffer,GL_STATIC_DRAW);
             glEnableVertexAttribArray(getShader().getAttrib("vPosition"));
@@ -190,16 +191,16 @@ public class Render2D extends Model{
     private void InitShader(){
         if(isFixedSize){
             try {
-                getShader().attachVertexShader(getClass().getResource("/Shaders/renderer2Dfixed.vs").getPath().substring(1));
-                getShader().attachFragmentShader(getClass().getResource("/Shaders/renderer2Dfixed.fs").getPath().substring(1));
+                getShader().attachVertexShader(Application.getInstance().getApp_path().concat("Shaders/renderer2Dfixed.vs"));
+                getShader().attachFragmentShader(Application.getInstance().getApp_path().concat("Shaders/renderer2Dfixed.fs"));
                 getShader().link();
             }catch(IOException err){
                 System.err.println(err);
             }
         }else{
             try {
-                getShader().attachVertexShader(getClass().getResource("/Shaders/renderer2D.vs").getPath().substring(1));
-                getShader().attachFragmentShader(getClass().getResource("/Shaders/renderer2D.fs").getPath().substring(1));
+                getShader().attachVertexShader(Application.getInstance().getApp_path().concat("/Shaders/renderer2D.vs"));
+                getShader().attachFragmentShader(Application.getInstance().getApp_path().concat("Shaders/renderer2D.fs"));
                 getShader().link();
             }catch(IOException err){
                 System.err.println(err);

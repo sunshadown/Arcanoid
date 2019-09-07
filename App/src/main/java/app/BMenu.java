@@ -1,20 +1,11 @@
 package app;
 
-import org.lwjgl.openal.AL;
-import org.lwjgl.openal.ALC;
-import org.lwjgl.openal.ALCCapabilities;
-import org.lwjgl.openal.ALCapabilities;
 import static org.lwjgl.openal.AL10.*;
-import static org.lwjgl.openal.ALC10.*;
 
-import fonts.FontType;
-import fonts.GUIText;
-import fonts.TextMaster;
 import org.joml.Matrix4f;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 
-import java.io.File;
 import java.io.IOException;
 
 
@@ -37,7 +28,7 @@ public class BMenu {
         focus_sound = new SoundSource();
 
         try {
-            focus_sound.LoadOgg(getClass().getResource("/Sound/select.ogg").getPath().substring(1));
+            focus_sound.LoadOgg(Application.getInstance().getApp_path().concat("Sound/select.ogg"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -47,11 +38,11 @@ public class BMenu {
     }
 
     private void Init(){
-        m_background = new Panel(550,500,new Vector2f(800,400),getClass().getResource("/Images/arcanoid.png").getPath().substring(1));
+        m_background = new Panel(550,500,new Vector2f(800,400),Application.getInstance().getApp_path().concat("Images/arcanoid.png"));
         m_background.getM_panel().setM_alpha(0.0f);
-        m_start = new Panel(100,50,new Vector2f(100,100),getClass().getResource("/Images/14.png").getPath().substring(1));
-        m_exit = new Panel(250,50,new Vector2f(100,100),getClass().getResource("/Images/13.png").getPath().substring(1));
-        m_settings = new Panel(400,50,new Vector2f(100,100),getClass().getResource("/Images/11.png").getPath().substring(1));
+        m_start = new Panel(100,50,new Vector2f(100,100),Application.getInstance().getApp_path().concat("Images/14.png"));
+        m_exit = new Panel(250,50,new Vector2f(100,100),Application.getInstance().getApp_path().concat("Images/13.png"));
+        m_settings = new Panel(400,50,new Vector2f(100,100),Application.getInstance().getApp_path().concat("Images/11.png"));
     }
 
     public void Update(float dt){

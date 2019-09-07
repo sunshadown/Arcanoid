@@ -42,26 +42,26 @@ public class ParalaxScroll {
     }
 
     public void Level_1(){
-        l_1 = new Panel(0,0,new Vector2f(1920,1080),getClass().getResource("/Images/cga_back_summer/l_1.png").getPath().substring(1));
+        l_1 = new Panel(0,0,new Vector2f(1920,1080),Application.getInstance().getApp_path().concat("Images/cga_back_summer/l_1.png"));
         l_1.getM_panel().setM_depth(-0.9f);
-        l_12 = new Panel(-1920,0,new Vector2f(1920,1080),getClass().getResource("/Images/cga_back_summer/l_1.png").getPath().substring(1));
+        l_12 = new Panel(-1920,0,new Vector2f(1920,1080),Application.getInstance().getApp_path().concat("Images/cga_back_summer/l_1.png"));
         l_12.getM_panel().setM_depth(-0.95f);
 
-        l_2 = new Panel(0,0,new Vector2f(1920,1080),getClass().getResource("/Images/cga_back_summer/l_2.png").getPath().substring(1));
+        l_2 = new Panel(0,0,new Vector2f(1920,1080),Application.getInstance().getApp_path().concat("Images/cga_back_summer/l_2.png"));
         l_2.getM_panel().setM_depth(-0.8f);
-        l_22 = new Panel(-1920,0,new Vector2f(1920,1080),getClass().getResource("/Images/cga_back_summer/l_2.png").getPath().substring(1));
+        l_22 = new Panel(-1920,0,new Vector2f(1920,1080),Application.getInstance().getApp_path().concat("Images/cga_back_summer/l_2.png"));
         l_22.getM_panel().setM_depth(-0.8f);
 
-        l_3 = new Panel(0,0,new Vector2f(1920,1080),getClass().getResource("/Images/cga_back_summer/l_3.png").getPath().substring(1));
+        l_3 = new Panel(0,0,new Vector2f(1920,1080),Application.getInstance().getApp_path().concat("Images/cga_back_summer/l_3.png"));
         l_3.getM_panel().setM_depth(-0.7f);
-        l_4 = new Panel(0,0,new Vector2f(1920,1080),getClass().getResource("/Images/cga_back_summer/l_4.png").getPath().substring(1));
+        l_4 = new Panel(0,0,new Vector2f(1920,1080),Application.getInstance().getApp_path().concat("Images/cga_back_summer/l_4.png"));
         l_4.getM_panel().setM_depth(-0.6f);
 
         l_42 = null;
 
-        l_5 = new Panel(0,0,new Vector2f(1920,1080),getClass().getResource("/Images/cga_back_summer/l_5.png").getPath().substring(1));
+        l_5 = new Panel(0,0,new Vector2f(1920,1080),Application.getInstance().getApp_path().concat("Images/cga_back_summer/l_5.png"));
         l_5.getM_panel().setM_depth(-0.5f);
-        l_6 = new Panel(0,0,new Vector2f(1920,1080),getClass().getResource("/Images/cga_back_summer/l_6.png").getPath().substring(1));
+        l_6 = new Panel(0,0,new Vector2f(1920,1080),Application.getInstance().getApp_path().concat("Images/cga_back_summer/l_6.png"));
         l_6.getM_panel().setM_depth(-0.4f);
 
         panels = new ArrayList<>();
@@ -78,25 +78,25 @@ public class ParalaxScroll {
     }
 
     public void Level_2(){
-        l_1 = new Panel(0,0,new Vector2f(1920,1080),getClass().getResource("/Images/cga_back_winter/l_1.png").getPath().substring(1));
+        l_1 = new Panel(0,0,new Vector2f(1920,1080),Application.getInstance().getApp_path().concat("Images/cga_back_winter/l_1.png"));
         l_1.getM_panel().setM_depth(-0.9f);
-        l_12 = new Panel(-1920,0,new Vector2f(1920,1080),getClass().getResource("/Images/cga_back_winter/l_1.png").getPath().substring(1));
+        l_12 = new Panel(-1920,0,new Vector2f(1920,1080),Application.getInstance().getApp_path().concat("Images/cga_back_winter/l_1.png"));
         l_12.getM_panel().setM_depth(-0.9f);
 
-        l_2 = new Panel(0,0,new Vector2f(1920,1080),getClass().getResource("/Images/cga_back_winter/l_2.png").getPath().substring(1));
+        l_2 = new Panel(0,0,new Vector2f(1920,1080),Application.getInstance().getApp_path().concat("Images/cga_back_winter/l_2.png"));
         l_2.getM_panel().setM_depth(-0.8f);
-        l_22 = new Panel(-1920,0,new Vector2f(1920,1080),getClass().getResource("/Images/cga_back_winter/l_2.png").getPath().substring(1));
+        l_22 = new Panel(-1920,0,new Vector2f(1920,1080),Application.getInstance().getApp_path().concat("Images/cga_back_winter/l_2.png"));
         l_22.getM_panel().setM_depth(-0.8f);
 
-        l_3 = new Panel(0,0,new Vector2f(1920,1080),getClass().getResource("/Images/cga_back_winter/l_3.png").getPath().substring(1));
+        l_3 = new Panel(0,0,new Vector2f(1920,1080),Application.getInstance().getApp_path().concat("Images/cga_back_winter/l_3.png"));
         l_3.getM_panel().setM_depth(-0.7f);
-        l_4 = new Panel(0,0,new Vector2f(1920,1080),getClass().getResource("/Images/cga_back_winter/l_4.png").getPath().substring(1));
+        l_4 = new Panel(0,0,new Vector2f(1920,1080),Application.getInstance().getApp_path().concat("Images/cga_back_winter/l_4.png"));
         l_4.getM_panel().setM_depth(-0.6f);
 
 
         l_42 = null;
 
-        l_5 = new Panel(0,0,new Vector2f(1920,1080),getClass().getResource("/Images/cga_back_winter/l_5.png").getPath().substring(1));
+        l_5 = new Panel(0,0,new Vector2f(1920,1080),Application.getInstance().getApp_path().concat("Images/cga_back_winter/l_5.png"));
         l_5.getM_panel().setM_depth(-0.5f);
 
         panels = new ArrayList<>();
@@ -112,25 +112,25 @@ public class ParalaxScroll {
     }
 
     public void Level_3(){
-        l_1 = new Panel(0,0,new Vector2f(1920,1080),getClass().getResource("/Images/cga_2back_dungeon/1_1.png").getPath().substring(1));
+        l_1 = new Panel(0,0,new Vector2f(1920,1080),Application.getInstance().getApp_path().concat("Images/cga_2back_dungeon/1_1.png"));
         l_1.getM_panel().setM_depth(-0.9f);
-        l_12 = new Panel(-1920,0,new Vector2f(1920,1080),getClass().getResource("/Images/cga_2back_dungeon/1_1.png").getPath().substring(1));
+        l_12 = new Panel(-1920,0,new Vector2f(1920,1080),Application.getInstance().getApp_path().concat("Images/cga_2back_dungeon/1_1.png"));
         l_12.getM_panel().setM_depth(-0.9f);
 
-        l_2 = new Panel(0,0,new Vector2f(1920,1080),getClass().getResource("/Images/cga_2back_dungeon/1_2.png").getPath().substring(1));
+        l_2 = new Panel(0,0,new Vector2f(1920,1080),Application.getInstance().getApp_path().concat("Images/cga_2back_dungeon/1_2.png"));
         l_2.getM_panel().setM_depth(-0.8f);
-        l_22 = new Panel(-1920,0,new Vector2f(1920,1080),getClass().getResource("/Images/cga_2back_dungeon/1_2.png").getPath().substring(1));
+        l_22 = new Panel(-1920,0,new Vector2f(1920,1080),Application.getInstance().getApp_path().concat("Images/cga_2back_dungeon/1_2.png"));
         l_22.getM_panel().setM_depth(-0.8f);
 
-        l_3 = new Panel(0,0,new Vector2f(1920,1080),getClass().getResource("/Images/cga_2back_dungeon/1_3.png").getPath().substring(1));
+        l_3 = new Panel(0,0,new Vector2f(1920,1080),Application.getInstance().getApp_path().concat("Images/cga_2back_dungeon/1_3.png"));
         l_3.getM_panel().setM_depth(-0.7f);
 
-        l_4 = new Panel(0,0,new Vector2f(1920,1080),getClass().getResource("/Images/cga_2back_dungeon/1_4.png").getPath().substring(1));
+        l_4 = new Panel(0,0,new Vector2f(1920,1080),Application.getInstance().getApp_path().concat("Images/cga_2back_dungeon/1_4.png"));
         l_4.getM_panel().setM_depth(-0.6f);
-        l_42 = new Panel(-1920,0,new Vector2f(1920,1080),getClass().getResource("/Images/cga_2back_dungeon/1_4.png").getPath().substring(1));
+        l_42 = new Panel(-1920,0,new Vector2f(1920,1080),Application.getInstance().getApp_path().concat("Images/cga_2back_dungeon/1_4.png"));
         l_42.getM_panel().setM_depth(-0.6f);
 
-        l_5 = new Panel(0,0,new Vector2f(1920,1080),getClass().getResource("/Images/cga_2back_dungeon/1_5.png").getPath().substring(1));
+        l_5 = new Panel(0,0,new Vector2f(1920,1080),getClass().getResource("Images/cga_2back_dungeon/1_5.png").getPath().substring(1));
         l_5.getM_panel().setM_depth(-0.5f);
 
         panels = new ArrayList<>();
