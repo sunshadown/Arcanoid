@@ -2,336 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="57f70d13-5e48-4255-a5ca-514ddcde991e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/ParalaxScroll.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/ParalaxScroll.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/01-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/03-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/04-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/05-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/06-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/07-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/08-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/09-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/10-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/11-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/12-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/12.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/13-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/13.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/14-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/14.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/15-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/15.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/16-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/16.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/17-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/17.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/18-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/18.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/19-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/58-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/58-Breakout-Tiles.xcf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/58_2-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/695678.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/8.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/9.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/License.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/01-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/02-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/03-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/04-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/05-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/06-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/07-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/08-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/09-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/10-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/11-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/12-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/13-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/14-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/15-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/16-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/17-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/18-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/19-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/20-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/21-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/22-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/23-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/24-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/25-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/26-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/27-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/28-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/29-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/30-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/31-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/32-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/33-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/34-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/35-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/36-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/37-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/38-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/39-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/40-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/41-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/42-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/43-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/44-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/45-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/46-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/47-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/48-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/49-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/50-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/51-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/52-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/53-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/54-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/55-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/56-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/57-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/58-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/59-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/60-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/PNG/61-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/Sprite Sheet/Breakout_Tile_Free.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/Sprite Sheet/Breakout_Tile_Free.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/Vector/Breakout Tile Set Free.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/Vector/Breakout Tile Set Free.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/preview.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout Tile Set Free/sample.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/License.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/01-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/02-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/03-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/04-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/05-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/06-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/07-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/08-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/09-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/10-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/11-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/12-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/13-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/14-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/15-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/16-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/17-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/18-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/19-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/20-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/21-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/22-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/23-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/24-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/25-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/26-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/27-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/28-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/29-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/30-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/31-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/32-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/33-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/34-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/35-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/36-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/37-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/38-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/39-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/40-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/41-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/42-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/43-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/44-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/45-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/46-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/47-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/48-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/49-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/50-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/51-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/52-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/53-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/54-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/55-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/56-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/57-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/58-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/59-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/60-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/PNG/61-Breakout-Tiles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/Sprite Sheet/Breakout_Tile_Free.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/Sprite Sheet/Breakout_Tile_Free.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/Vector/Breakout Tile Set Free.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/Vector/Breakout Tile Set Free.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/preview.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/Breakout_Tile_Set_Free/Breakout Tile Set Free/sample.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/arcanoid.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/back_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/back_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/background.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cdr/Button.cdr" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cdr/Windows.cdr" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_2back_dungeon/1_0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_2back_dungeon/1_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_2back_dungeon/1_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_2back_dungeon/1_3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_2back_dungeon/1_4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_2back_dungeon/1_5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_2back_dungeon/2_0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_2back_dungeon/2_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_2back_dungeon/2_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_2back_dungeon/2_3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_2back_dungeon/2_4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_2back_dungeon/2_5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_2back_dungeon/cga_back_cave.ai" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_back_summer/cga_background_summer.ai" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_back_summer/cga_background_summer.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_back_summer/l_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_back_summer/l_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_back_summer/l_3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_back_summer/l_4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_back_summer/l_5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_back_summer/l_6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_back_summer/pl_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_back_summer/pl_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_back_summer/pl_3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_back_winter/cga_back_winter.ai" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_back_winter/cga_background_winter.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_back_winter/l_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_back_winter/l_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_back_winter/l_3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_back_winter/l_4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_back_winter/l_5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_back_winter/pl_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_back_winter/pl_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_back_winter/pl_3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_menu.ai" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_menu_sc/1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_menu_sc/10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_menu_sc/11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_menu_sc/12.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_menu_sc/13.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_menu_sc/14.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_menu_sc/15.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_menu_sc/16.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_menu_sc/17.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_menu_sc/18.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_menu_sc/2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_menu_sc/3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_menu_sc/4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_menu_sc/5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_menu_sc/6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_menu_sc/7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_menu_sc/8.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_menu_sc/9.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_menu_sc/back_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_menu_sc/back_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_menu_sc/cga_menu.ai" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_menu_sc/logo_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_menu_sc/logo_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cga_menu_sc/pr_menu.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/cursor.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/heart_full_32x32.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/logo_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/logo_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/png/Button.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/png/README.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/png/Windows.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/pr_menu.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/progress_bar.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/svg/Button.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/svg/Windows.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/test.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/test2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/test3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/ui_yellow_steam/1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/ui_yellow_steam/2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/ui_yellow_steam/3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/ui_yellow_steam/b.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/ui_yellow_steam/b_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/ui_yellow_steam/b_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/ui_yellow_steam/b_3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/ui_yellow_steam/b_4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/ui_yellow_steam/b_5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/ui_yellow_steam/b_6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/ui_yellow_steam/b_7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/ui_yellow_steam/bar_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/ui_yellow_steam/bar_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/ui_yellow_steam/bonus.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/ui_yellow_steam/c.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/ui_yellow_steam/cga_ui_yellow_steam.ai" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/ui_yellow_steam/h.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/ui_yellow_steam/level.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/ui_yellow_steam/menu.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/ui_yellow_steam/music.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/ui_yellow_steam/ok.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/ui_yellow_steam/options.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/ui_yellow_steam/pr_ui_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/ui_yellow_steam/s1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/ui_yellow_steam/s2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/ui_yellow_steam/sl_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/ui_yellow_steam/sl_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Images/ui_yellow_steam/sound.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Shaders/attractor.fs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Shaders/attractor.vs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Shaders/cube_fix.fs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Shaders/cube_fix.tc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Shaders/cube_fix.te" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Shaders/cube_fix.vs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Shaders/cube_gooch.fs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Shaders/cube_gooch.gs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Shaders/cube_gooch.vs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Shaders/fontFragment.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Shaders/fontVertex.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Shaders/fragment.fs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Shaders/particle.fs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Shaders/particle.vs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Shaders/phong.fs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Shaders/phong.gs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Shaders/phong.vs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Shaders/renderer2D.fs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Shaders/renderer2D.vs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Shaders/renderer2Dfixed.fs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Shaders/renderer2Dfixed.vs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Shaders/vertex.vs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Sound/Explosion.ogg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Sound/Explosion.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Sound/SAMPLESWAP/DRUMS (SINGLE HITS)/Weird and Interesting Hits/stapler.aif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Sound/SAMPLESWAP/LEGAL LICENSE INFO READ ME.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Sound/back.ogg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Sound/back.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Sound/bounce1.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Sound/bounce1.ogg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Sound/bounce2.ogg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Sound/bounce2.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Sound/rsl.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Sound/rsl.ogg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Sound/select.ogg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Sound/select.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Sound/sound.ogg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Sound/stapler.aif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Sound/stapler.ogg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Sound/validate.ogg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/Sound/validate.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/font/LucidaBrightItalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/font/arial.fnt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/font/arial.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/font/calibri.fnt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arcanoidv1.0/font/calibri.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/Manager.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -346,8 +17,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/app/Application.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="147" column="21" lean-forward="true" selection-start-line="147" selection-start-column="21" selection-end-line="147" selection-end-column="21" />
+            <state relative-caret-position="2363">
+              <caret line="151" column="44" selection-start-line="151" selection-start-column="44" selection-end-line="151" selection-end-column="44" />
               <folding>
                 <element signature="e#11410#11411#0" expanded="true" />
                 <element signature="e#11439#11440#0" expanded="true" />
@@ -370,74 +41,22 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/app/ParalaxScroll.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="131" lean-forward="true" selection-start-line="131" selection-end-line="131" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/app/Manager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2766">
-              <caret line="91" column="56" selection-start-line="91" selection-start-column="56" selection-end-line="91" selection-end-column="56" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/app/Logic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
+            <state relative-caret-position="4131">
               <caret line="259" column="52" selection-start-line="259" selection-start-column="52" selection-end-line="259" selection-end-column="52" />
-              <folding>
-                <element signature="e#18152#18153#0" expanded="true" />
-                <element signature="e#18250#18251#0" expanded="true" />
-                <element signature="e#18309#18310#0" expanded="true" />
-                <element signature="e#18384#18385#0" expanded="true" />
-                <element signature="e#18446#18447#0" expanded="true" />
-                <element signature="e#18520#18521#0" expanded="true" />
-                <element signature="e#18577#18578#0" expanded="true" />
-                <element signature="e#18648#18649#0" expanded="true" />
-                <element signature="e#18711#18712#0" expanded="true" />
-                <element signature="e#18794#18795#0" expanded="true" />
-                <element signature="e#18877#18878#0" expanded="true" />
-                <element signature="e#18992#18993#0" expanded="true" />
-                <element signature="e#19072#19073#0" expanded="true" />
-                <element signature="e#19182#19183#0" expanded="true" />
-                <element signature="e#19259#19260#0" expanded="true" />
-                <element signature="e#19372#19373#0" expanded="true" />
-                <element signature="e#19436#19437#0" expanded="true" />
-                <element signature="e#19521#19522#0" expanded="true" />
-                <element signature="e#19598#19599#0" expanded="true" />
-                <element signature="e#19703#19704#0" expanded="true" />
-                <element signature="e#19770#19771#0" expanded="true" />
-                <element signature="e#19855#19856#0" expanded="true" />
-                <element signature="e#19908#19909#0" expanded="true" />
-                <element signature="e#19973#19974#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/app/GUI.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/app/Manager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-506">
-              <caret line="4" selection-start-line="4" selection-end-line="4" />
+            <state relative-caret-position="175">
+              <caret line="49" column="28" lean-forward="true" selection-start-line="49" selection-start-column="28" selection-end-line="49" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#145#146#0" expanded="true" />
-                <element signature="e#172#173#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -463,6 +82,7 @@
       <find>test</find>
       <find>panel_ball_l</find>
       <find>gui</find>
+      <find>triangle</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -515,13 +135,13 @@
         <option value="$PROJECT_DIR$/src/main/java/fonts/FontRenderer.java" />
         <option value="$PROJECT_DIR$/src/main/java/app/BMenu.java" />
         <option value="$PROJECT_DIR$/src/main/java/app/Application.java" />
-        <option value="$PROJECT_DIR$/src/main/java/app/Manager.java" />
         <option value="$PROJECT_DIR$/src/main/java/app/Logic.java" />
         <option value="$PROJECT_DIR$/src/main/java/app/Panel.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/src/main/java/app/GUI.java" />
         <option value="$PROJECT_DIR$/src/main/java/app/ParalaxScroll.java" />
+        <option value="$PROJECT_DIR$/src/main/java/app/Manager.java" />
       </list>
     </option>
   </component>
@@ -585,7 +205,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1567959955925" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1567970307215" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -628,7 +248,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Designer" order="0" />
       <window_info id="UI Designer" order="1" />
@@ -637,7 +256,7 @@
       <window_info id="Image Layers" order="4" />
       <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.17583893" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="0" visible="true" weight="0.3286119" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="0" visible="true" weight="0.27478755" />
       <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="2" weight="0.3286119" />
       <window_info anchor="bottom" id="Message" order="3" />
@@ -721,49 +340,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/Manager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2766">
-          <caret line="91" column="56" selection-start-line="91" selection-start-column="56" selection-end-line="91" selection-end-column="56" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/Logic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="259" column="52" selection-start-line="259" selection-start-column="52" selection-end-line="259" selection-end-column="52" />
-          <folding>
-            <element signature="e#18152#18153#0" expanded="true" />
-            <element signature="e#18250#18251#0" expanded="true" />
-            <element signature="e#18309#18310#0" expanded="true" />
-            <element signature="e#18384#18385#0" expanded="true" />
-            <element signature="e#18446#18447#0" expanded="true" />
-            <element signature="e#18520#18521#0" expanded="true" />
-            <element signature="e#18577#18578#0" expanded="true" />
-            <element signature="e#18648#18649#0" expanded="true" />
-            <element signature="e#18711#18712#0" expanded="true" />
-            <element signature="e#18794#18795#0" expanded="true" />
-            <element signature="e#18877#18878#0" expanded="true" />
-            <element signature="e#18992#18993#0" expanded="true" />
-            <element signature="e#19072#19073#0" expanded="true" />
-            <element signature="e#19182#19183#0" expanded="true" />
-            <element signature="e#19259#19260#0" expanded="true" />
-            <element signature="e#19372#19373#0" expanded="true" />
-            <element signature="e#19436#19437#0" expanded="true" />
-            <element signature="e#19521#19522#0" expanded="true" />
-            <element signature="e#19598#19599#0" expanded="true" />
-            <element signature="e#19703#19704#0" expanded="true" />
-            <element signature="e#19770#19771#0" expanded="true" />
-            <element signature="e#19855#19856#0" expanded="true" />
-            <element signature="e#19908#19909#0" expanded="true" />
-            <element signature="e#19973#19974#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/app/LevelManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-901">
@@ -776,8 +352,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/app/Application.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="147" column="21" lean-forward="true" selection-start-line="147" selection-start-column="21" selection-end-line="147" selection-end-column="21" />
+        <state relative-caret-position="2363">
+          <caret line="151" column="44" selection-start-line="151" selection-start-column="44" selection-end-line="151" selection-end-column="44" />
           <folding>
             <element signature="e#11410#11411#0" expanded="true" />
             <element signature="e#11439#11440#0" expanded="true" />
@@ -803,6 +379,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="251">
           <caret line="131" lean-forward="true" selection-start-line="131" selection-end-line="131" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/Logic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4131">
+          <caret line="259" column="52" selection-start-line="259" selection-start-column="52" selection-end-line="259" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/Manager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="49" column="28" lean-forward="true" selection-start-line="49" selection-start-column="28" selection-end-line="49" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

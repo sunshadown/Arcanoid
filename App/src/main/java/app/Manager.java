@@ -77,12 +77,12 @@ public class Manager {
         attractor = new Attractor(100000);
 
         //cube = new Cube(true);
-        triangle1 = new Triangle(new Vector3f(0.0f,-45.0f,0.0f),new Vector3f(0,0,0),new Vector3f(1,1,1));
+        /*triangle1 = new Triangle(new Vector3f(0.0f,-45.0f,0.0f),new Vector3f(0,0,0),new Vector3f(1,1,1));
         triangle2 = new Triangle(new Vector3f(0.0f,45.0f,0.0f),new Vector3f(0,0,0),new Vector3f(1,1,1));
         triangle3 = new Triangle(new Vector3f(0.0f,0.0f,45.0f),new Vector3f(90,0,0),new Vector3f(1,1,1));
         triangle4 = new Triangle(new Vector3f(0.0f,0.0f,-45.0f),new Vector3f(90,0,0),new Vector3f(1,1,1));
         triangle5 = new Triangle(new Vector3f(-45.0f,0.0f,0.0f),new Vector3f(0,0,90),new Vector3f(1,1,1));
-        triangle6 = new Triangle(new Vector3f(45.0f,0.0f,0.0f),new Vector3f(0,0,90),new Vector3f(1,1,1));
+        triangle6 = new Triangle(new Vector3f(45.0f,0.0f,0.0f),new Vector3f(0,0,90),new Vector3f(1,1,1));*/
         renderer = new Render2D();
         setRenderer2(new Render2D(edward_filter,new Vector3f(200,100,0),new Vector2f(300,300),0.0f));
         ((Render2D) renderer).LoadTex(Application.getInstance().getApp_path().concat("Images/test3.jpg"));
