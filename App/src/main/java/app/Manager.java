@@ -76,7 +76,7 @@ public class Manager {
 
         attractor = new Attractor(100000);
 
-        cube = new Cube(true);
+        //cube = new Cube(true);
         triangle1 = new Triangle(new Vector3f(0.0f,-45.0f,0.0f),new Vector3f(0,0,0),new Vector3f(1,1,1));
         triangle2 = new Triangle(new Vector3f(0.0f,45.0f,0.0f),new Vector3f(0,0,0),new Vector3f(1,1,1));
         triangle3 = new Triangle(new Vector3f(0.0f,0.0f,45.0f),new Vector3f(90,0,0),new Vector3f(1,1,1));
@@ -200,7 +200,6 @@ public class Manager {
         }
         else{
             getCamera().Update(dt);
-            //cube.Update(dt);
             getLogic().Update(dt);
             //panel.Update(dt);
             if(time  >= 3.0f) {
