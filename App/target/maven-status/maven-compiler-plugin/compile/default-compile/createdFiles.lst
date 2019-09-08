@@ -8,6 +8,7 @@ app\NanoVGUtils$GPUtimer.class
 app\BMenu.class
 app\NanoVGUtils.class
 app\LevelManager.class
+app\GUI.class
 app\Texture.class
 app\Render2D.class
 app\Cube.class

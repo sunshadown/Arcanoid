@@ -2,7 +2,7 @@ package app;
 
 import org.joml.Matrix4f;
 import org.joml.Vector2f;
-import org.lwjgl.Sys;
+
 
 public class GUI {
     private final float time_life = 25.0f;
@@ -13,8 +13,8 @@ public class GUI {
 
     GUI()
     {
-        life_proggres = new Panel(10,10,new Vector2f(550,100),getClass().getResource("/Images/18.png").getPath().substring(1));
-        life_proggres_bar = new Panel(60,30,new Vector2f(460,15),getClass().getResource("/Images/progress_bar.png").getPath().substring(1));
+        life_proggres = new Panel(10,10,new Vector2f(550,100),Application.getInstance().getApp_path().concat("/Images/18.png"));
+        life_proggres_bar = new Panel(60,30,new Vector2f(460,15),Application.getInstance().getApp_path().concat("/Images/progress_bar.png"));
         life_proggres_bar.getM_panel().setM_depth(0.1f);
         life_proggres_bar_max = life_proggres_bar.getSize().x();
     }
