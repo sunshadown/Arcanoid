@@ -89,7 +89,7 @@ public class Manager {
         ((Render2D) getRenderer2()).LoadTex(Application.getInstance().getApp_path().concat("Images/test3.jpg"));
 
         //PANEL INIT
-        panel = new Panel(1920/2,50,new Vector2f(200.0f,50.0f),Application.getInstance().getApp_path().concat("Images/01-Breakout-Tiles.png"));
+        panel = new Panel(1920/2,110,new Vector2f(200.0f,50.0f),Application.getInstance().getApp_path().concat("Images/01-Breakout-Tiles.png"));
         setLogic(new Logic(panel));
         //!!!!!!!!!!
         fbo = new FBO(1920,1080);
