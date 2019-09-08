@@ -130,7 +130,7 @@ public class ParalaxScroll {
         l_42 = new Panel(-1920,0,new Vector2f(1920,1080),Application.getInstance().getApp_path().concat("Images/cga_2back_dungeon/1_4.png"));
         l_42.getM_panel().setM_depth(-0.6f);
 
-        l_5 = new Panel(0,0,new Vector2f(1920,1080),getClass().getResource("Images/cga_2back_dungeon/1_5.png").getPath().substring(1));
+        l_5 = new Panel(0,0,new Vector2f(1920,1080),Application.getInstance().getApp_path().concat("Images/cga_2back_dungeon/1_5.png"));
         l_5.getM_panel().setM_depth(-0.5f);
 
         panels = new ArrayList<>();
