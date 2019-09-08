@@ -261,7 +261,7 @@ public class Logic{
         Vector2f size_of_life = new Vector2f(50,50);
         float offset = 5.0f;
         String path = Application.getInstance().getApp_path().concat("Images/heart_full_32x32.png");
-        for(int i = 0; i < getNumber_of_lifes(); i++){
+        for(int i = 0; i < max_number_of_lifes; i++){
             Panel temp = new Panel(starting_pos.x + i*size_of_life.x+offset,starting_pos.y,size_of_life,path);
             temp.getM_panel().setM_depth(0.2f);
             lifes.add(temp);
