@@ -28,6 +28,7 @@ public class Logic{
     private boolean canPush = true;
 
     private int number_of_lifes = 5;
+    private final int max_number_of_lifes = 10;
     public static float scale = 5.0f;
     private float time = 0;
     private Panel test;
@@ -38,13 +39,16 @@ public class Logic{
     private LevelManager levelManager;
     private PostProcess postProcess;
     private List<Panel> lifes;
+    private GUI gui;
 
     private ParalaxScroll paralaxScroll;
 
     public Logic(Panel m_Panel){
         this.setM_Panel(m_Panel);
+        m_Panel.getM_panel().setM_depth(1.0f);
 
         setParalaxScroll(new ParalaxScroll());
+        gui = new GUI();
         setBlocks(new ArrayList<>());
 
 
@@ -103,7 +107,7 @@ public class Logic{
         setWorld(new World());
         getWorld().setGravity(World.ZERO_GRAVITY);
         Settings settings = getWorld().getSettings();
-        settings.setMaximumTranslation(30.0f);
+        settings.setMaximumTranslation(22.0f);
         settings.setAngularTolerance(0.0f);
         double max_translation = getWorld().getSettings().getMaximumTranslation();
         double max_linear_correction = getWorld().getSettings().getMaximumLinearCorrection();
@@ -123,6 +127,8 @@ public class Logic{
         String path = getClass().getResource("/Images/58_2-Breakout-Tiles.png").getPath().substring(1);
         panel_ball_l = new Panel(getM_Panel().getM_panel().getPosition().x ,getM_Panel().getM_panel().getPosition().y+getM_Panel().getM_panel().getSize().y,new Vector2f(25,25),path);
         panel_ball_r = new Panel(getM_Panel().getM_panel().getPosition().x + getM_Panel().getM_panel().getSize().x-25,getM_Panel().getM_panel().getPosition().y+getM_Panel().getM_panel().getSize().y,new Vector2f(25,25),path);
+        panel_ball_l.getM_panel().setM_depth(1.0f);
+        panel_ball_r.getM_panel().setM_depth(1.0f);
         Body l_ball = new Body();
         Body r_ball = new Body();
         panel_ball_l.setBody(l_ball);
@@ -151,6 +157,8 @@ public class Logic{
 
         setTest(new Panel(screen_x/2,200,new Vector2f(50.0f,50.0f),getClass().getResource("/Images/58-Breakout-Tiles.png").getPath().substring(1)));
         //test.getM_panel().setAdditive(true);
+        //test.getM_panel().setM_alpha(0.6f);
+        test.getM_panel().setM_depth(1.0f);
 
         Body test_body = new Body();
         //BodyFixture fixture = new BodyFixture(Geometry.createRectangle((double)test.getM_panel().getSize().x,(double)test.getM_panel().getSize().y));
@@ -192,7 +200,7 @@ public class Logic{
         Mover(dt);
         getTest().Update(dt);
         getPostProcess().Update(dt);
-
+        gui.Update(dt);
         time += dt;
         if(time >= 0.2f){
             time = 0.0f;
@@ -212,22 +220,28 @@ public class Logic{
 
     public void Render(Matrix4f view, Matrix4f proj, Matrix4f ortho){
         getParalaxScroll().Render(view,proj,ortho);
-
+        gui.Render(view,proj,ortho);
+        RenderLifes(view,proj,ortho);
         getM_Panel().Render(view,proj,ortho);
+        panel_ball_l.Render(view,proj,ortho);
+        panel_ball_r.Render(view,proj,ortho);
         getTest().Render(view,proj,ortho);
         getPostProcess().Render(view,proj,ortho);
 
-        panel_ball_l.Render(view,proj,ortho);
-        panel_ball_r.Render(view,proj,ortho);
 
         for (Panel panel:
              walls) {
             panel.Render(view,proj,ortho);
         }
         RenderSideBlocks(view,proj,ortho);
-        RenderLifes(view,proj,ortho);
     }
 
+    public void LifeIncrease()
+    {
+        int actuall_value = Math.min(number_of_lifes,max_number_of_lifes);
+        if(actuall_value == max_number_of_lifes)return;
+        number_of_lifes++;
+    }
     public void LifeDecrese(){
         if(getNumber_of_lifes() <= 1){
             setALive(false);
@@ -243,12 +257,13 @@ public class Logic{
 
     private void CreateLifes(){
         lifes = new ArrayList<>();
-        Vector2f starting_pos = new Vector2f(10,10);
+        Vector2f starting_pos = new Vector2f(25,40);
         Vector2f size_of_life = new Vector2f(50,50);
         float offset = 5.0f;
         String path = getClass().getResource("/Images/heart_full_32x32.png").getPath().substring(1);
-        for(int i = 0; i < getNumber_of_lifes(); i++){
+        for(int i = 0; i < max_number_of_lifes; i++){
             Panel temp = new Panel(starting_pos.x + i*size_of_life.x+offset,starting_pos.y,size_of_life,path);
+            temp.getM_panel().setM_depth(0.2f);
             lifes.add(temp);
         }
     }
@@ -478,5 +493,13 @@ public class Logic{
 
     public void setBlocks(List<Panel> blocks) {
         this.blocks = blocks;
+    }
+
+    public GUI getGui() {
+        return gui;
+    }
+
+    public void setGui(GUI gui) {
+        this.gui = gui;
     }
 }

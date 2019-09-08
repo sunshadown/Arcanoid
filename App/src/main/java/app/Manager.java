@@ -76,7 +76,7 @@ public class Manager {
 
         attractor = new Attractor(100000);
 
-        cube = new Cube(true);
+        //cube = new Cube(true);
         triangle1 = new Triangle(new Vector3f(0.0f,-45.0f,0.0f),new Vector3f(0,0,0),new Vector3f(1,1,1));
         triangle2 = new Triangle(new Vector3f(0.0f,45.0f,0.0f),new Vector3f(0,0,0),new Vector3f(1,1,1));
         triangle3 = new Triangle(new Vector3f(0.0f,0.0f,45.0f),new Vector3f(90,0,0),new Vector3f(1,1,1));
@@ -89,7 +89,7 @@ public class Manager {
         ((Render2D) getRenderer2()).LoadTex(getClass().getResource("/Images/test3.jpg").getPath().substring(1));
 
         //PANEL INIT
-        panel = new Panel(1920/2,50,new Vector2f(200.0f,50.0f),getClass().getResource("/Images/01-Breakout-Tiles.png").getPath().substring(1));
+        panel = new Panel(1920/2,110,new Vector2f(200.0f,50.0f),getClass().getResource("/Images/01-Breakout-Tiles.png").getPath().substring(1));
         setLogic(new Logic(panel));
         //!!!!!!!!!!
         fbo = new FBO(1920,1080);
@@ -200,7 +200,6 @@ public class Manager {
         }
         else{
             getCamera().Update(dt);
-            //cube.Update(dt);
             getLogic().Update(dt);
             //panel.Update(dt);
             if(time  >= 3.0f) {

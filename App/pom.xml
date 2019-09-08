@@ -466,11 +466,6 @@
             <artifactId>annotations</artifactId>
             <version>16.0.2</version>
         </dependency>
-        <dependency>
-            <groupId>com.github.nifty-gui</groupId>
-            <artifactId>nifty</artifactId>
-            <version>1.4.3</version>
-        </dependency>
 
     </dependencies>
 

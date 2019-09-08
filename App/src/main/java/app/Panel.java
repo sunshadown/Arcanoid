@@ -17,27 +17,27 @@ public class Panel{
     private Body body;
 
     public Panel(float screen_x, float screen_y, Vector2f size, int VAO, Texture texture, Shader shader){
-        this.screen_x = screen_x;
-        this.screen_y = screen_y;
+        this.setScreen_x(screen_x);
+        this.setScreen_y(screen_y);
         setCenter_x((screen_x + size.x/2));
         setCenter_y((screen_y + size.y/2));
-        this.size = size;
+        this.setSize(size);
 
         setM_panel(new Render2D(0,new Vector3f((float)screen_x,screen_y,0.0f),size,0.0f,VAO,texture,shader));
     }
 
     public Panel(float screen_x, float screen_y, Vector2f size,String filepath){
-        this.screen_x = screen_x;
-        this.screen_y = screen_y;
+        this.setScreen_x(screen_x);
+        this.setScreen_y(screen_y);
         setCenter_x((screen_x + size.x/2));
         setCenter_y((screen_y + size.y/2));
-        this.size = size;
+        this.setSize(size);
         this.setFilepath(filepath);
         Setup();
     }
 
     private void Setup(){
-        setM_panel(new Render2D(0,new Vector3f((float)screen_x,screen_y,0.0f),size,0.0f));
+        setM_panel(new Render2D(0,new Vector3f((float) getScreen_x(), getScreen_y(),0.0f), getSize(),0.0f));
         getM_panel().LoadTex(getFilepath());
     }
 
@@ -46,9 +46,9 @@ public class Panel{
         //transform.setTranslation(transform.getTranslationX()*5.0f,transform.getTranslationY()*5.0f);
         setCenter_x((float)transform.getTranslationX());
         setCenter_y((float)transform.getTranslationY());
-        screen_x = (getCenter_x() - size.x/2);
-        screen_y = (getCenter_y() - size.y/2);
-        m_panel.setPosition(new Vector3f(screen_x,screen_y,(float)0));
+        setScreen_x((getCenter_x() - getSize().x/2));
+        setScreen_y((getCenter_y() - getSize().y/2));
+        m_panel.setPosition(new Vector3f(getScreen_x(), getScreen_y(),(float)0));
         //System.out.println(screen_x+" , "+screen_y);
         //System.out.println(transform.getTranslationX()+" , "+transform.getTranslationY());
     }
@@ -82,8 +82,8 @@ public class Panel{
     }
 
     public void CalculateCenter(){
-        center_x = (m_panel.getPosition().x + size.x/2);
-        center_y = (m_panel.getPosition().y + size.y/2);
+        center_x = (m_panel.getPosition().x + getSize().x/2);
+        center_y = (m_panel.getPosition().y + getSize().y/2);
         body.getTransform().setTranslationX(center_x);
         body.getTransform().setTranslationY(center_y);
         //System.out.println(body.getTransform().getTranslationX()+" , "+body.getTransform().getTranslationY());
@@ -104,5 +104,34 @@ public class Panel{
 
     public void setCenter_y(float center_y) {
         this.center_y = center_y;
+    }
+
+    public Vector2f getSize() {
+        return size;
+    }
+
+    public void setM_panel_size()
+    {
+        m_panel.setSize(size);
+    }
+
+    public void setSize(Vector2f size) {
+        this.size = size;
+    }
+
+    public float getScreen_x() {
+        return screen_x;
+    }
+
+    public void setScreen_x(float screen_x) {
+        this.screen_x = screen_x;
+    }
+
+    public float getScreen_y() {
+        return screen_y;
+    }
+
+    public void setScreen_y(float screen_y) {
+        this.screen_y = screen_y;
     }
 }
