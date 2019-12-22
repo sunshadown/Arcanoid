@@ -1,6 +1,6 @@
 # LWJGL_Arcanoid
 
-Simple arcanoid game created in free time/
+Simple arcanoid game created in free time.
 
 ![overview](logo1.png "logo1")
 
